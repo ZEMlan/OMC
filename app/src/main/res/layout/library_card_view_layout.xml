@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        android:layout_marginLeft="@dimen/mtrl_card_spacing"
+        android:layout_marginTop="@dimen/mtrl_card_spacing"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        app:cardBackgroundColor="@color/cardBackgroundOchre"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="?selectableItemBackground"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="78dp"
+                android:layout_height="86dp"
+                android:layout_margin="5dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/cardBackgroundOchre"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.035"
+                app:srcCompat="@drawable/image_just_one_more_chapter" />
+
+            <TextView
+                android:id="@+id/fileName"
+                android:layout_width="280dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/"
+                android:text="Book's file name"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorDark"
+                android:textSize="17sp"
+                android:typeface="sans"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageFav"
+                android:layout_width="32dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="32dp"
+                android:adjustViewBounds="false"
+                android:tint="@color/colorMaroon"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageIsRead"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/fileName"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/heart" />
+
+            <ImageView
+                android:id="@+id/imageIsRead"
+                android:layout_width="32dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:tint="@color/colorMaroon"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageFav"
+                app:layout_constraintTop_toBottomOf="@+id/fileName"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/read" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

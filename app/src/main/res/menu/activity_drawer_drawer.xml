@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_start"
+            android:icon="@drawable/star"
+            android:title="Стартовая страница" />
+        <item
+            android:id="@+id/nav_lib"
+            android:icon="@drawable/dip_switch"
+            android:title="Библиотека" />
+        <item
+            android:id="@+id/nav_reading"
+            android:icon="@drawable/book_open_page_variant"
+            android:title="Читаю сейчас" />
+    </group>
+
+    <item android:title="Книжные полки">
+        <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_fav"
+                android:icon="@drawable/heart_multiple"
+                android:title="Любимое" />
+            <item
+                android:id="@+id/nav_1"
+                android:icon="@drawable/read"
+                android:title="Прочитанно" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
