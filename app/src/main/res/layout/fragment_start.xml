@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.StartFragment">
+    tools:context=".controller.fragments.StartFragment">
 
 
     <com.google.android.material.internal.CheckableImageButton
@@ -15,7 +15,7 @@
         android:layout_marginStart="60dp"
         android:clickable="true"
         android:cropToPadding="false"
-        android:focusable="auto"
+        android:focusable="true"
         android:focusableInTouchMode="false"
         android:scaleType="fitCenter"
         android:src="@drawable/icon_read_books_round"

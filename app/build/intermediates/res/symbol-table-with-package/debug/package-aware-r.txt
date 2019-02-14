@@ -1149,10 +1149,13 @@ drawable abc_vector_test
 drawable arrow_left
 drawable avd_hide_password
 drawable avd_show_password
+drawable book_multiple_plus
+drawable book_multiple_remove
 drawable book_multiple_variant
 drawable book_open_page_variant
 drawable bookmark
 drawable bookmark_outline
+drawable bookmark_plus
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1183,7 +1186,6 @@ drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
-drawable icon_book_read
 drawable icon_read_books
 drawable icon_read_books_round
 drawable image_book_cat
@@ -1248,11 +1250,11 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
-id action_settings
 id action_text
 id actions
 id activity_chooser_view_content
 id add
+id add_to_collection
 id alertTitle
 id all
 id always
@@ -1265,6 +1267,8 @@ id beginning
 id blocking
 id bottom
 id bounce
+id buttonFav
+id buttonIsRead
 id buttonPanel
 id cancel_action
 id center
@@ -1336,8 +1340,6 @@ id icon_group
 id ifRoom
 id image
 id imageButton
-id imageFav
-id imageIsRead
 id info
 id invisible
 id italic
@@ -1594,8 +1596,8 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
-menu activity_drawer_drawer
-menu drawer
+menu activity_drawer
+menu context_library_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 string abc_action_bar_home_description

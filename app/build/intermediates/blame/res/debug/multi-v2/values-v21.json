@@ -61,7 +61,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-1\\files-1.1\\media-1.0.0-beta01.aar\\55b584185ef1e1f0648e676db5754fdf\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-1\\files-1.1\\media-1.0.0.aar\\aa565b3cafe27fa2fd976d8faae137e1\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
