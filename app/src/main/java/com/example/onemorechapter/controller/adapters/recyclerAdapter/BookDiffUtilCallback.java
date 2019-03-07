@@ -61,3 +61,45 @@ public class BookDiffUtilCallback extends DiffUtil.Callback {
         return diff;
     }
 }
+
+//стаф для переделки после
+
+/**    private void fetchCurrentStorageDirectory(final String curDir) {
+        Single.create((SingleEmitter<ArrayList<Book>> emitter) ->  {
+            File mFile = new File(curDir);
+            Log.d("Storage", "Can read: " +  Boolean.toString(mFile.canRead()));
+            emitter.onSuccess(Book.getBookArray(mFile.listFiles()));
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<ArrayList<Book>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d("Single", "Subscribe on thread " + Thread.currentThread().getName());
+                    }
+
+                    @Override
+                    public void onSuccess(ArrayList<Book> bookArrayList) {
+                        books = bookArrayList;
+                        Log.d("Single", "Success on thread " + Thread.currentThread().getName());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
+                });
+    }
+
+    private void getList(String curDir){
+        Single.just(Book.getBookArray(new File(curDir).listFiles()))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess(bookArrayList -> books = bookArrayList)
+                .doOnError(Throwable::printStackTrace)
+                .subscribe();
+    }
+
+
+ }
+ **/

@@ -1,7 +1,6 @@
 package com.example.onemorechapter.controller.fragments;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,25 +8,16 @@ import android.widget.LinearLayout;
 
 import com.example.onemorechapter.controller.adapters.recyclerAdapter.CardRecyclerAdapter;
 import com.example.onemorechapter.R;
-import com.example.onemorechapter.model.entities.Book;
-
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.ArrayList;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.example.onemorechapter.model.Constants.*;
+
 public class LibraryFragment extends androidx.fragment.app.Fragment {
+    private String currentDir;
 
-    private static final String CURRENT_DIR = "currentDir";
 
-    private String currentDir = Environment.getRootDirectory().getPath();
-    private File file;
-    private ArrayList<Book> books;
-    private FilenameFilter filter;
-
-    private RecyclerView recyclerView;
     private CardRecyclerAdapter infoAdapter;
 
     public LibraryFragment() {
@@ -47,38 +37,22 @@ public class LibraryFragment extends androidx.fragment.app.Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             currentDir = getArguments().getString(CURRENT_DIR);
+        }else {
+            currentDir = ROOT_DIR;
         }
 
-        file = new File(currentDir);
-        filter  = new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                String[] s = {".fb2", ".txt", ".doc", ".docx", ".pdf"};
-                for (String i : s) {
-                    if (name.contains(i)) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        };
-        books = Book.getBookArray(file.listFiles());
-
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_library, container, false);
-        recyclerView = layout.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = layout.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
         infoAdapter = new CardRecyclerAdapter(currentDir);
         recyclerView.setAdapter(infoAdapter);
-        infoAdapter.updateList(books);
         return layout;
     }
 
@@ -91,14 +65,13 @@ public class LibraryFragment extends androidx.fragment.app.Fragment {
         super.onPause();
     }
 
-
     public String getCurrentDir() {
-        return infoAdapter.getCurrentDir();
+        return currentDir;
     }
 
     public void setCurrentDir(String currentDir) {
         this.currentDir = currentDir;
-        file = new File(currentDir);
         infoAdapter.setCurrentDir(currentDir);
     }
+
 }

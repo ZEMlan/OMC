@@ -13,6 +13,10 @@ public class Book implements Serializable {
         return name;
     }
 
+    public String getType(){
+        return name.substring(name.indexOf("."));
+    }
+
     public String getPath() {
         return path;
     }
@@ -50,8 +54,7 @@ public class Book implements Serializable {
         }
         ArrayList<Book> books = new ArrayList<>();
         for(File i: files){
-            Book book = new Book(i);
-            books.add(book);
+            books.add(new Book(i));
         }
         return books;
     }
