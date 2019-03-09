@@ -1,7 +1,5 @@
 package com.example.onemorechapter.controller.adapters.recyclerAdapter;
 
-import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,56 +10,34 @@ import android.widget.Toast;
 
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.controller.fragments.ReadingFragment;
-import com.example.onemorechapter.controller.Observables;
 import com.example.onemorechapter.model.entities.Book;
-import com.google.android.material.card.MaterialCardView;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.Callable;
-
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
-import io.reactivex.Completable;
-import io.reactivex.CompletableEmitter;
-import io.reactivex.CompletableObserver;
-import io.reactivex.CompletableOnSubscribe;
-import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
 import io.reactivex.SingleObserver;
-import io.reactivex.SingleOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.internal.observers.BlockingMultiObserver;
-import io.reactivex.internal.observers.SubscriberCompletableObserver;
-import io.reactivex.observers.DisposableObserver;
-import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subjects.Subject;
 
-public class CardRecyclerAdapter extends RecyclerView.Adapter<CardRecyclerAdapter.CardViewHolder> implements IAsyncRespons {
 
-    FragmentActivity activity;
+public class CardRecyclerAdapter extends RecyclerView.Adapter<CardRecyclerAdapter.CardViewHolder> {
+
+    private FragmentActivity activity;
 
     private String currentDir;
     private FilenameFilter filter;
     private ArrayList<Book> books = new ArrayList<>();
 
-    mAsyncTask getBooks;
-
     public CardRecyclerAdapter(String currentDir) {
         this.currentDir = currentDir;
-
         filter = (dir, name) -> {
             String[] s = {".fb2", ".txt", ".doc", ".docx", ".pdf"};
             for (String i : s) {
@@ -71,7 +47,7 @@ public class CardRecyclerAdapter extends RecyclerView.Adapter<CardRecyclerAdapte
             }
             return false;
         };
-        getBooks(new File(currentDir));
+        fetchBookList(currentDir);
     }
 
     @NonNull
@@ -90,7 +66,7 @@ public class CardRecyclerAdapter extends RecyclerView.Adapter<CardRecyclerAdapte
             TextView fileText = v.findViewById(R.id.fileName);
             String fileName = fileText.getText().toString();
 
-            if (new File(currentDir + "/" + fileName).isFile()) {
+            if (new File(currentDir + "/" + fileName).isFile() && fileName.contains(".")) {
                 Book book = books.get(position);
                 if (book.getType().equals(".pdf")) {
                     openBook(books.get(position), v);
@@ -99,57 +75,40 @@ public class CardRecyclerAdapter extends RecyclerView.Adapter<CardRecyclerAdapte
                 }
             } else {
                 currentDir = currentDir + "/" + fileName;
-                getBooks(new File(currentDir));
+                fetchBookList(currentDir);
 
             }
         });
     }
 
-    private void updateList(ArrayList<Book> newList) {
-
-        Observable.fromCallable(() -> DiffUtil.calculateDiff(new BookDiffUtilCallback(newList, books)))
+    private void fetchBookList(final String curDir) {
+        Single.create((SingleEmitter<ArrayList<Book>> emitter) ->  {
+            File mFile = new File(curDir);
+            Log.d("Storage", "Can read: " +  Boolean.toString(mFile.canRead()));
+            emitter.onSuccess(Book.getBookArray(mFile.listFiles()));
+        })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableObserver<DiffUtil.DiffResult>() {
-                    DiffUtil.DiffResult result;
+                .subscribe(new SingleObserver<ArrayList<Book>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d("Single", "Subscribe on thread " + Thread.currentThread().getName());
+                    }
 
                     @Override
-                    public void onNext(DiffUtil.DiffResult diffResult) {
-                        result = diffResult;
+                    public void onSuccess(ArrayList<Book> bookArrayList) {
+                        books = bookArrayList;
+                        notifyDataSetChanged();
+                        Log.d("Single", "Success on thread " + Thread.currentThread().getName());
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
                     }
-
-                    @Override
-                    public void onComplete() {
-                        books.clear();
-                        books.addAll(newList);
-                        result.dispatchUpdatesTo(CardRecyclerAdapter.this);
-                    }
                 });
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull CardViewHolder holder, int position, List<Object> payloads) {
-        if (payloads.isEmpty()) {
-            super.onBindViewHolder(holder, position, payloads);
-        } else {
-            Bundle bundle = (Bundle) payloads.get(0);
-            Book book = books.get(position);
-            for (String key : bundle.keySet()) {
-                if (key.equals("isRead")) {
-                    book.setRead(bundle.getBoolean("isRead"));
-                }
-                if (key.equals("isFavourite")) {
-                    book.setFavourite(bundle.getBoolean("isFavourite"));
-                }
-            }
-            holder.bind(book);
-        }
-    }
 
     private boolean openBook(Book book, View view) {
         ReadingFragment fragment = ReadingFragment.newInstance(book);
@@ -168,28 +127,15 @@ public class CardRecyclerAdapter extends RecyclerView.Adapter<CardRecyclerAdapte
         return books == null ? 0 : books.size();
     }
 
-    public ArrayList<Book> getBooks(){
-        return books;
-    }
-
     public String getCurrentDir() {
         return currentDir;
     }
 
     public void setCurrentDir(String curDir) {
-        currentDir = curDir;
-        getBooks(new File(curDir));
-    }
-
-    private void getBooks(File file){
-        getBooks = new mAsyncTask();
-        getBooks.delegate = this;
-        getBooks.execute(file);
-    }
-
-    @Override
-    public void processFinish(ArrayList<Book> output) {
-        updateList(output);
+        if (!currentDir.equals(curDir)) {
+            currentDir = curDir;
+            fetchBookList(curDir);
+        }
     }
 
     class CardViewHolder extends RecyclerView.ViewHolder {
@@ -205,7 +151,7 @@ public class CardRecyclerAdapter extends RecyclerView.Adapter<CardRecyclerAdapte
 
         }
 
-        public void bind(final Book book) {
+        void bind(final Book book) {
 
             bookFileName.setText(book.getName());
 
@@ -241,7 +187,5 @@ public class CardRecyclerAdapter extends RecyclerView.Adapter<CardRecyclerAdapte
             });
         }
     }
-
-
 
 }

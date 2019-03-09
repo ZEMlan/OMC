@@ -66,6 +66,7 @@ public class LibraryFragment extends androidx.fragment.app.Fragment {
     }
 
     public String getCurrentDir() {
+        currentDir = infoAdapter.getCurrentDir();
         return currentDir;
     }
 

@@ -41,9 +41,9 @@ public class Book implements Serializable {
         isRead = read;
     }
 
-    public Book(File file) {
+    private Book(File file) {
         name = file.getName();
-        size = file.lastModified();
+        size = file.length()/8192; //file size in MB
         path = file.getPath();
     }
 
