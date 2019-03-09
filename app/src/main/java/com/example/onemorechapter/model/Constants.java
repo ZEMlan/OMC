@@ -7,8 +7,6 @@ public class Constants {
 
     public static final String ROOT_DIR = Environment.getRootDirectory().getAbsolutePath();
 
-    public static final String MNT_DIR = "/mnt";
-
     public static final String STORAGE_DIR = "/storage";
 
     public static final String COLLECTIONS = "collections";

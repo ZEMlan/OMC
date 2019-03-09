@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //костыль, не работает
+        StrictMode.allowThreadDiskReads();
         setContentView(R.layout.activity_drawer);
         if (savedInstanceState != null){
             currentDir = savedInstanceState.getString(CURRENT_DIR);
