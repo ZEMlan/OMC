@@ -11,4 +11,6 @@ public class Constants {
 
     public static final String STORAGE_DIR = "/storage";
 
+    public static final String COLLECTIONS = "collections";
+
 }
