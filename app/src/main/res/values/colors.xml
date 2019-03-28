@@ -4,7 +4,7 @@
     <color name="primaryLightColor">#F05545</color>
     <color name="primaryDarkColor">#7F0000</color>
     <color name="secondaryColor">#b71c1c</color>
-    <color name="secondaryLightColor">#f05545</color>
+    <color name="secondaryLightColor">#F05545</color>
     <color name="secondaryDarkColor">#7F0000</color>
     <color name="primaryTextColor">#FFF3E0</color>
     <color name="secondaryTextColor">#efebe9</color>>
@@ -14,4 +14,5 @@
     <color name="colorMaroon">#7E0406</color>
     <color name="textColorDark">#6D3F01</color>
     <color name="textColorLight">#F7F3CD</color>
+    <color name="headerDarkColor">#848F0808</color>
 </resources>

@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
+        android:name="com.example.onemorechapter.model.App"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -23,7 +24,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/BookTheme" >
-        <activity android:name="com.example.onemorechapter.controller.MainActivity" >
+        <activity android:name="com.example.onemorechapter.mainactivity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +36,15 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+        <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="com.example.onemorechapter.lifecycle-process"
+            android:exported="false"
+            android:multiprocess="true" />
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"
             android:authorities="com.example.onemorechapter.com.android.tools.ir.server.InstantRunContentProvider"

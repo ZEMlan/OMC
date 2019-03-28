@@ -4,33 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.fragments.StartFragment">
+    tools:context=".StartFragment">
 
 
     <com.google.android.material.internal.CheckableImageButton
         android:id="@+id/imageButton"
         style="@android:style/Widget.Holo.ImageButton"
-        android:layout_width="267dp"
-        android:layout_height="405dp"
-        android:layout_marginStart="60dp"
+        android:layout_width="299dp"
+        android:layout_height="273dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:cropToPadding="false"
         android:focusable="true"
         android:focusableInTouchMode="false"
         android:scaleType="fitCenter"
         android:src="@drawable/icon_read_books_round"
-        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="267dp"
+        android:layout_width="395dp"
         android:layout_height="91dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/cagliostro"
         android:text="Hello there!"
@@ -41,6 +43,7 @@
         android:typeface="normal"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
