@@ -17,13 +17,13 @@ public interface IBookDao {
     @Query("SELECT * FROM books")
     Flowable<List<Book>> getAll();
 
-    //maybe not useful
-    @Query("SELECT EXISTS (SELECT * FROM books WHERE bookKey = :bookId LIMIT 1)")
-    boolean isExist(int bookId);
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertMany(List<Book> books);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(List<Book> books);
+    void insert(Book book);
 
     @Delete
     void delete(List<Book> books);
+
 }

@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.database.entities.Book;
@@ -16,7 +18,10 @@ import com.shockwave.pdfium.PdfDocument;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
+import java.io.IOException;
+
+import androidx.annotation.Nullable;
+import androidx.documentfile.provider.DocumentFile;
 
 import static com.example.onemorechapter.model.Constants.CURRENT_BOOK;
 import static com.example.onemorechapter.model.Constants.CURRENT_PAGE;
@@ -28,8 +33,12 @@ public class ReadingFragment
 
     private Book currentBook;
 
-    private PDFView pdfView;
     private int pageNumber = 0;
+
+    private ImageView blank, loading;
+    private PDFView pdfView;
+    private TextView txtView;
+
 
     public ReadingFragment() {
         // Required empty public constructor
@@ -41,14 +50,34 @@ public class ReadingFragment
         return new ReadingPresenter();
     }
 
-    public static ReadingFragment newInstance(Book book) {
+    public static ReadingFragment newInstance(DocumentFile book) {
         ReadingFragment fragment = new ReadingFragment();
         if(book != null){
             Bundle args = new Bundle();
-            args.putSerializable(CURRENT_BOOK, book);
+            args.putSerializable(CURRENT_BOOK, new Book(book));
             fragment.setArguments(args);
         }
         return fragment;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        blank = view.findViewById(R.id.blank);
+        loading = view.findViewById(R.id.loadingView);
+        txtView = view.findViewById(R.id.txtView);
+        pdfView = view.findViewById(R.id.pdfView);
+
+        if(currentBook == null){
+            blank.setVisibility(View.VISIBLE);
+        }else{
+            try {
+                presenter.loadBook(currentBook.getType());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -64,7 +93,7 @@ public class ReadingFragment
         setRetainInstance(true);
 
         if (getArguments() != null) {
-            currentBook = (Book)getArguments().getSerializable(CURRENT_BOOK);
+            currentBook = (Book) getArguments().getSerializable(CURRENT_BOOK);
         }else if(savedInstanceState != null) {
             currentBook = (Book) savedInstanceState.getSerializable(CURRENT_BOOK);
             pageNumber = savedInstanceState.getInt(CURRENT_PAGE);
@@ -75,21 +104,24 @@ public class ReadingFragment
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View layout;
-        if(currentBook == null) {
-            layout = inflater.inflate(R.layout.fragment_reading_blank, container, false);
-        }else {
-            layout = inflater.inflate(R.layout.reading_pdf, container, false);
-
-        }
-        return layout;
+        return inflater.inflate(R.layout.reading, container, false);
     }
 
 
     @Override
+    public void showLoading() {
+        loading.setVisibility(View.VISIBLE);
+        pdfView.setVisibility(View.INVISIBLE);
+        txtView.setVisibility(View.INVISIBLE);
+        blank.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
     public void openPdf() {
+        loading.setVisibility(View.INVISIBLE);
+        pdfView.setVisibility(View.VISIBLE);
         //pdfView = new PDFView(getContext(), );
-        pdfView.fromFile(new File(currentBook.path))
+        pdfView.fromUri(currentBook.getDocumentFile().getUri())
                 .enableSwipe(true).swipeHorizontal(true)
                 .defaultPage(pageNumber)
                 .onPageChange((page, pageCount) -> pageNumber = page)
@@ -108,35 +140,26 @@ public class ReadingFragment
     }
 
     @Override
-    public void openTxt() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //TODO: open {.txt; .xml; .doc}
+    public void openTxt(String s) {
+        loading.setVisibility(View.INVISIBLE);
+        blank.setVisibility(View.INVISIBLE);
+        txtView.setVisibility(View.VISIBLE);
+        txtView.setText(s);
     }
 
     @Override
     public void openFb2() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        blank.setVisibility(View.INVISIBLE);
+        loading.setVisibility(View.INVISIBLE);
         //TODO: ope .fb2
     }
 
     @Override
     public void openEpub() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        blank.setVisibility(View.INVISIBLE);
+        loading.setVisibility(View.INVISIBLE);
         //TODO: open .epub
     }
 
 
 }
-

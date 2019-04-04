@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "b56893e14e53dbc44f7d43d47dbd5c88",
+    "identityHash": "37488c39da4a8609e777055626f7370d",
     "entities": [
       {
         "tableName": "books",
@@ -32,7 +32,7 @@
       },
       {
         "tableName": "collections",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`collectionKey` INTEGER NOT NULL, `name` TEXT, PRIMARY KEY(`collectionKey`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`collectionKey` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`collectionKey`))",
         "fields": [
           {
             "fieldPath": "collectionKey",
@@ -44,7 +44,7 @@
             "fieldPath": "name",
             "columnName": "name",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -126,7 +126,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b56893e14e53dbc44f7d43d47dbd5c88\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"37488c39da4a8609e777055626f7370d\")"
     ]
   }
 }

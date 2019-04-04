@@ -1374,6 +1374,7 @@ id errorView
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fab
 id fileName
 id fill
 id fill_horizontal
@@ -1544,6 +1545,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id txtView
 id unchecked
 id uniform
 id unlabeled
@@ -1630,7 +1632,6 @@ layout design_text_input_password_icon
 layout fragment_books
 layout fragment_collection_list
 layout fragment_library
-layout fragment_reading_blank
 layout fragment_start
 layout library_card_view_layout
 layout mtrl_layout_snackbar
@@ -1651,7 +1652,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
-layout reading_pdf
+layout reading
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

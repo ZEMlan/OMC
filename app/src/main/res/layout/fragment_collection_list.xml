@@ -19,5 +19,18 @@
         app:srcCompat="@drawable/no_collections_cat"
         android:visibility="invisible"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/plus"
+        android:tint="@color/secondaryTextColor"
+        app:fabSize="normal"
+        app:rippleColor="@color/secondaryColor" />
+
 
 </FrameLayout>

@@ -9,13 +9,18 @@ import java.util.List;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import io.reactivex.Flowable;
 
 @Dao
 public interface IBookCollectionJoinDao {
-    @Insert
-    void insert(List<BookCollectionJoin> collectionJoin);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insert(BookCollectionJoin join);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertMany(List<BookCollectionJoin> collectionJoin);
 
     @Query("SELECT * FROM books INNER JOIN book_collection_join ON " +
             "books.bookKey=book_collection_join.bookId WHERE " +
@@ -28,5 +33,8 @@ public interface IBookCollectionJoinDao {
     Flowable<List<Collection>> getCollectionsForBook(int targetBookId);
 
     @Delete
-    void delet(List<BookCollectionJoin> bookCollectionJoins);
+    void deleteMany(List<BookCollectionJoin> bookCollectionJoins);
+
+    @Delete
+    void delete(BookCollectionJoin join);
 }

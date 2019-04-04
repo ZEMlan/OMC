@@ -19,7 +19,7 @@ class BooksPresenter extends MvpBasePresenter<IBooksView> {
     }
 
     void loadCollection(Collection collection){
-       repository.loadBooksInCollection(collection.collectionKey)
+       repository.loadBooksInCollection(collection.getCollectionKey())
                .observeOn(AndroidSchedulers.mainThread())
                .subscribe(books -> {
                    if(isViewAttached()){

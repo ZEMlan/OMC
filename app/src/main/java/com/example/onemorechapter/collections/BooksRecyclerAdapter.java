@@ -59,7 +59,7 @@ public class BooksRecyclerAdapter extends RecyclerView.Adapter<BooksRecyclerAdap
 
     private void openBook(Book book, View view) {
         //TODO: checking book format
-        ReadingFragment fragment = ReadingFragment.newInstance(book);
+        ReadingFragment fragment = new ReadingFragment();
         DrawerLayout drawer = view.findViewById(R.id.drawer_layout);
 
         if (fragment != null) {
@@ -105,36 +105,36 @@ public class BooksRecyclerAdapter extends RecyclerView.Adapter<BooksRecyclerAdap
 
         void bind(final Book book) {
 
-            bookFileName.setText(book.name);
+            bookFileName.setText(book.getName());
 
-            if (book.isRead) {
+            if (book.isRead()) {
                 butIsRead.setImageResource(R.drawable.check_all);
             } else {
                 butIsRead.setImageResource(R.drawable.check);
             }
 
-            if (book.isFavourite) {
+            if (book.isFavourite()) {
                 butFav.setImageResource(R.drawable.heart_multiple);
             } else {
                 butFav.setImageResource(R.drawable.heart);
             }
 
             butFav.setOnClickListener(v -> {
-                if (!book.isFavourite) {
+                if (!book.isFavourite()) {
                     butFav.setImageResource(R.drawable.heart_multiple);
-                    book.isFavourite = true;
+                    book.setFavourite(true);
                 } else {
                     butFav.setImageResource(R.drawable.heart);
-                    book.isFavourite = false;
+                    book.setFavourite(false);
                 }
             });
             butIsRead.setOnClickListener(v -> {
-                if (!book.isRead) {
+                if (!book.isRead()) {
                     butIsRead.setImageResource(R.drawable.check_all);
-                    book.isRead = true;
+                    book.setRead(true);
                 } else {
                     butIsRead.setImageResource(R.drawable.check);
-                    book.isRead = false;
+                    book.setRead(false);
                 }
             });
         }

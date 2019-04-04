@@ -9,7 +9,6 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.Update;
 import io.reactivex.Flowable;
 
 @Dao
@@ -18,11 +17,12 @@ public interface ICollectionDao {
     Flowable<List<Collection>> getAll();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(List<Collection> collections);
+    void insert(Collection collection);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertMany(List<Collection> collections);
 
     @Delete
     void delete(List<Collection> collections);
 
-    @Update
-    void update(List<Collection> collections);
 }

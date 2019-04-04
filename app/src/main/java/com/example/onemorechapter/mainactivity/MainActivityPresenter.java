@@ -65,10 +65,6 @@ class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>
     void onBackPressed(String fragmentType){
         boolean isViewAttached = isViewAttached();
         switch (fragmentType) {
-            case LIBRARY:
-                if (isViewAttached)
-                    getView().onBackPressedLibrary();
-                break;
             default:
                 if (isViewAttached)
                     getView().onBackPressedOthers();

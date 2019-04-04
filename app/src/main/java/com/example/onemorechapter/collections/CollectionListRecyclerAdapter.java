@@ -69,7 +69,7 @@ class CollectionListRecyclerAdapter
         }
 
         void bind(final Collection collection) {
-            name.setText(collection.name);
+            name.setText(collection.getName());
         }
     }
 }

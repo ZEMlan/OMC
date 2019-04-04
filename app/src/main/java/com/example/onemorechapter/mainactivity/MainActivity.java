@@ -1,16 +1,18 @@
 package com.example.onemorechapter.mainactivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.StartFragment;
 import com.example.onemorechapter.collections.BooksFragment;
 import com.example.onemorechapter.collections.CollectionListFragment;
 import com.example.onemorechapter.database.entities.Collection;
-import com.example.onemorechapter.library.LibraryFragment;
+import com.example.onemorechapter.model.App;
 import com.example.onemorechapter.reading.ReadingFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
@@ -18,26 +20,25 @@ import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import org.jetbrains.annotations.NotNull;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.documentfile.provider.DocumentFile;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 import static com.example.onemorechapter.model.Constants.COLLECTIONS;
-import static com.example.onemorechapter.model.Constants.CURRENT_DIR;
-import static com.example.onemorechapter.model.Constants.LIBRARY;
 import static com.example.onemorechapter.model.Constants.OTHERS;
 import static com.example.onemorechapter.model.Constants.READING;
+import static com.example.onemorechapter.model.Constants.REQUEST_CODE_PICK_FILE;
 import static com.example.onemorechapter.model.Constants.START;
-import static com.example.onemorechapter.model.Constants.STORAGE_DIR;
 import static com.example.onemorechapter.model.Constants.TARGET_FRAGMENT;
 
 public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPresenter>
         implements NavigationView.OnNavigationItemSelectedListener,
         IMainActivityView{
 
-    private String currentDir;
     private String targetFragment;
 
     FragmentManager fragmentManager;
@@ -47,6 +48,17 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
     ActionBarDrawerToggle toggle;
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE_PICK_FILE  && resultCode == Activity.RESULT_OK) {
+            Uri singleData = null;
+            if (data != null) {
+                singleData = data.getData();
+                App.getInstance().setCurrentDir(DocumentFile.fromSingleUri(this, singleData));
+                showReadingFragment();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +66,10 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         setContentView(R.layout.activity_drawer);
 
         if (savedInstanceState != null){
-            currentDir = savedInstanceState.getString(CURRENT_DIR);
             targetFragment = savedInstanceState.getString(TARGET_FRAGMENT);
 
         }else {
             //TODO: actions for first launch
-            currentDir = STORAGE_DIR;
             targetFragment = START;
         }
 
@@ -85,9 +95,8 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
     }
 
     public void onSaveInstanceState(@NotNull Bundle bundle) {
-        super.onSaveInstanceState(bundle);
-        bundle.putString(CURRENT_DIR, currentDir);
         bundle.putString(TARGET_FRAGMENT, targetFragment);
+        super.onSaveInstanceState(bundle);
     }
 
 
@@ -122,31 +131,29 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.frame, firstFragment)
-                .commit();
+                .commitAllowingStateLoss();
         targetFragment = START;
         drawer.closeDrawer(GravityCompat.START);
     }
 
     @Override
     public void showReadingFragment(){
-        ReadingFragment readingFragment = new ReadingFragment();
+        ReadingFragment readingFragment = ReadingFragment
+                .newInstance(App.getInstance().getCurrentDir());
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.frame, readingFragment)
-                .commit();
+                .commitAllowingStateLoss();
         targetFragment = READING;
         drawer.closeDrawer(GravityCompat.START);
     }
 
     @Override
     public void showLibraryFragment(){
-        LibraryFragment libraryFragment = new LibraryFragment();
-        fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.frame, libraryFragment)
-                .commit();
-        targetFragment = LIBRARY;
-        drawer.closeDrawer(GravityCompat.START);
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("*/*");
+        startActivityForResult(intent, REQUEST_CODE_PICK_FILE);
     }
 
     @Override
@@ -154,7 +161,7 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         CollectionListFragment collectionFragment = new CollectionListFragment();
         fragmentManager.beginTransaction()
                 .replace(R.id.frame, collectionFragment)
-                .commit();
+                .commitAllowingStateLoss();
         targetFragment = OTHERS;
         drawer.closeDrawer(GravityCompat.START);
     }
@@ -169,8 +176,8 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.frame, booksFragment)
-                .commit();
-        targetFragment = collection.name;
+                .commitAllowingStateLoss();
+        targetFragment = collection.getName();
         drawer.closeDrawer(GravityCompat.START);
     }
 
@@ -183,32 +190,12 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
 
     @Override
     public void onBackPressed() {
-        androidx.fragment.app.Fragment fragment = getSupportFragmentManager()
-                .findFragmentById(R.id.frame);
-        if(fragment instanceof LibraryFragment) {
-            getPresenter().onBackPressed(LIBRARY);
-        }else
-            getPresenter().onBackPressed("other");
+        getPresenter().onBackPressed("other");
     }
 
     @Override
     public void setTitle(String title) {
         toolbar.setTitle(title);
-    }
-
-    @Override
-    public void onBackPressedLibrary() {
-        androidx.fragment.app.Fragment fragment = getSupportFragmentManager()
-                .findFragmentById(R.id.frame);
-        String curDir = ((LibraryFragment) fragment).getCurrentDir();
-        if(curDir.split("/").length > 2){
-            curDir = curDir.substring(0, curDir.lastIndexOf("/"));
-            ((LibraryFragment) fragment).setCurrentDir(curDir);
-        }
-
-        else{
-            Toast.makeText(this, "Root dir", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
