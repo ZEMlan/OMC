@@ -1,8 +1,12 @@
 package com.example.onemorechapter.database.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
-import androidx.room.Ignore;
 import androidx.room.Index;
 
 import static androidx.room.ForeignKey.CASCADE;
@@ -11,10 +15,10 @@ import static androidx.room.ForeignKey.CASCADE;
         tableName="book_collection_join",
         primaryKeys={"collectionId", "bookId"},
         foreignKeys={
-                @ForeignKey(
+                @ForeignKey (
                         entity=Collection.class,
                         parentColumns="collectionKey",
-                        childColumns="collectionId",
+                        childColumns="collectionId" ,
                         onDelete=CASCADE),
                 @ForeignKey(
                         entity= Book.class,
@@ -27,17 +31,43 @@ import static androidx.room.ForeignKey.CASCADE;
         }
 )
 public class BookCollectionJoin {
-    public int collectionId;
-    public int bookId;
+    @ColumnInfo
+    @NonNull
+    private Integer collectionId;
+    @ColumnInfo
+    @NonNull
+    private Integer bookId;
 
     public BookCollectionJoin(int collectionId, int bookId) {
         this.collectionId = collectionId;
         this.bookId = bookId;
     }
 
-    @Ignore
-    public BookCollectionJoin(Collection collection, Book book){
-        this.collectionId = collection.collectionKey;
-        this.bookId = book.bookKey;
+    @NonNull
+    public Integer getCollectionId() {
+        return collectionId;
+    }
+
+    public void setCollectionId(@NonNull Integer collectionId) {
+        this.collectionId = collectionId;
+    }
+
+    @NonNull
+    public Integer getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(@NonNull Integer bookId) {
+        this.bookId = bookId;
+    }
+
+    public static ArrayList makeList(List<Book> books, int collectionId){
+        ArrayList res = new ArrayList();
+        if(books == null)
+            return res;
+        for(Book book: books) {
+            res.add(new BookCollectionJoin(book.getBookKey(), collectionId));
+        }
+        return res;
     }
 }

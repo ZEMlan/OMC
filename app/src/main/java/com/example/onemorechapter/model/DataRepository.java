@@ -1,7 +1,5 @@
 package com.example.onemorechapter.model;
 
-import android.util.Log;
-
 import com.example.onemorechapter.database.AppDatabase;
 import com.example.onemorechapter.database.dao.IBookCollectionJoinDao;
 import com.example.onemorechapter.database.dao.IBookDao;
@@ -10,15 +8,11 @@ import com.example.onemorechapter.database.entities.Book;
 import com.example.onemorechapter.database.entities.BookCollectionJoin;
 import com.example.onemorechapter.database.entities.Collection;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
-import io.reactivex.Single;
-import io.reactivex.SingleEmitter;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class DataRepository {
@@ -48,80 +42,66 @@ public class DataRepository {
         return sInstance;
     }
 
+    public void insertManyData(final List<Book> books,
+                                   final Collection collection,
+                                   final List<BookCollectionJoin> joinList) {
+        db.runInTransaction( () -> {
+            bookDao.insertMany(books);
+            collectionDao.insert(collection);
+            bookCollectionJoinDao.insertMany(joinList);
+        });
+    }
 
-    public void insertCollections(ArrayList<Collection> collections){
-        Single.create((SingleEmitter<String> emitter) ->  {
-            collectionDao.insert(collections);
-            emitter.onSuccess("Ok");
-        })
+    public void insertData(final Book book,
+                                final Collection collection,
+                                final BookCollectionJoin join) {
+        db.runInTransaction( () -> {
+            bookDao.insert(book);
+            collectionDao.insert(collection);
+            bookCollectionJoinDao.insert(join);
+        });
+    }
+
+    public void insertCollections(List<Collection> collections){
+        Completable.create( emitter -> collectionDao.insertMany(collections))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<String>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
+                .subscribe();
+    }
 
-                    @Override
-                    public void onSuccess(String s) {
-                        Log.d("Single", "Success on thread " + Thread.currentThread().getName());
-                    }
-
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-                });
+    public void insertCollection(Collection collection) {
+        Completable.create( emitter -> collectionDao.insert(collection))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
     }
 
     public void insertBooks(final List<Book> books){
-        Single.create((SingleEmitter<String> emitter) ->  {
-            bookDao.insert(books);
-            emitter.onSuccess("Ok");
-        })
+        Completable.create( emitter -> bookDao.insertMany(books))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<String>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-
-                    @Override
-                    public void onSuccess(String s) {
-                        Log.d("Single", "Success on thread " + Thread.currentThread().getName());
-                    }
-
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-                });
+                .subscribe();
     }
 
-    public void insertBookCollectionJoin(List<BookCollectionJoin> joinList){
-        Single.create((SingleEmitter<String> emitter) ->  {
-            bookCollectionJoinDao.insert(joinList);
-            emitter.onSuccess("Ok");
-        })
+    public void insertBook(Book book) {
+        Completable.create( emitter -> bookDao.insert(book))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<String>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
+                .subscribe();
+    }
 
-                    @Override
-                    public void onSuccess(String s) {
-                        Log.d("Single", "Success on thread " + Thread.currentThread().getName());
-                    }
+    public void insertManyBookCollectionJoin(List<BookCollectionJoin> joinList){
+        Completable.create( emitter -> bookCollectionJoinDao.insertMany(joinList))
+        .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+    }
 
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-                });
+    public void insertBookCollectionJoin(BookCollectionJoin join) {
+        Completable.create( emitter -> bookCollectionJoinDao.insert(join))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
     }
 
     /**
@@ -141,8 +121,11 @@ public class DataRepository {
         return db.bookCollectionJoinDao().getCollectionsForBook(bookId) ;
     }
 
-    public boolean isExsist(){
-        return db.getDatabaseCreated();
+    public void deleteMany(List<BookCollectionJoin> joins){
+        db.bookCollectionJoinDao().deleteMany(joins);
     }
 
+    public void delete(BookCollectionJoin join) {
+        db.bookCollectionJoinDao().delete(join);
+    }
 }

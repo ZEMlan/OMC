@@ -10,6 +10,7 @@ import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.onemorechapter.database.entities.Collection;
 import io.reactivex.Flowable;
 import java.lang.Exception;
+import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -25,8 +26,6 @@ public final class ICollectionDao_Impl implements ICollectionDao {
 
   private final EntityDeletionOrUpdateAdapter __deletionAdapterOfCollection;
 
-  private final EntityDeletionOrUpdateAdapter __updateAdapterOfCollection;
-
   public ICollectionDao_Impl(RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfCollection = new EntityInsertionAdapter<Collection>(__db) {
@@ -37,11 +36,15 @@ public final class ICollectionDao_Impl implements ICollectionDao {
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Collection value) {
-        stmt.bindLong(1, value.collectionKey);
-        if (value.name == null) {
+        if (value.getCollectionKey() == null) {
+          stmt.bindNull(1);
+        } else {
+          stmt.bindLong(1, value.getCollectionKey());
+        }
+        if (value.getName() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.name);
+          stmt.bindString(2, value.getName());
         }
       }
     };
@@ -53,30 +56,28 @@ public final class ICollectionDao_Impl implements ICollectionDao {
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Collection value) {
-        stmt.bindLong(1, value.collectionKey);
-      }
-    };
-    this.__updateAdapterOfCollection = new EntityDeletionOrUpdateAdapter<Collection>(__db) {
-      @Override
-      public String createQuery() {
-        return "UPDATE OR ABORT `collections` SET `collectionKey` = ?,`name` = ? WHERE `collectionKey` = ?";
-      }
-
-      @Override
-      public void bind(SupportSQLiteStatement stmt, Collection value) {
-        stmt.bindLong(1, value.collectionKey);
-        if (value.name == null) {
-          stmt.bindNull(2);
+        if (value.getCollectionKey() == null) {
+          stmt.bindNull(1);
         } else {
-          stmt.bindString(2, value.name);
+          stmt.bindLong(1, value.getCollectionKey());
         }
-        stmt.bindLong(3, value.collectionKey);
       }
     };
   }
 
   @Override
-  public void insert(List<Collection> collections) {
+  public void insert(Collection collection) {
+    __db.beginTransaction();
+    try {
+      __insertionAdapterOfCollection.insert(collection);
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void insertMany(List<Collection> collections) {
     __db.beginTransaction();
     try {
       __insertionAdapterOfCollection.insert(collections);
@@ -91,17 +92,6 @@ public final class ICollectionDao_Impl implements ICollectionDao {
     __db.beginTransaction();
     try {
       __deletionAdapterOfCollection.handleMultiple(collections);
-      __db.setTransactionSuccessful();
-    } finally {
-      __db.endTransaction();
-    }
-  }
-
-  @Override
-  public void update(List<Collection> collections) {
-    __db.beginTransaction();
-    try {
-      __updateAdapterOfCollection.handleMultiple(collections);
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
@@ -125,7 +115,13 @@ public final class ICollectionDao_Impl implements ICollectionDao {
             final String _tmpName;
             _tmpName = _cursor.getString(_cursorIndexOfName);
             _item = new Collection(_tmpName);
-            _item.collectionKey = _cursor.getInt(_cursorIndexOfCollectionKey);
+            final Integer _tmpCollectionKey;
+            if (_cursor.isNull(_cursorIndexOfCollectionKey)) {
+              _tmpCollectionKey = null;
+            } else {
+              _tmpCollectionKey = _cursor.getInt(_cursorIndexOfCollectionKey);
+            }
+            _item.setCollectionKey(_tmpCollectionKey);
             _result.add(_item);
           }
           return _result;

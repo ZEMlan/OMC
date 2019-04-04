@@ -42,4 +42,8 @@ public class Constants {
     public static final String HAVE_READ = "haveRead";
 
     public static final String OTHERS = "others";
+
+    public static final int READ_REQUEST_CODE = 42;
+
+    public static final int REQUEST_CODE_PICK_FILE = 1;
 }

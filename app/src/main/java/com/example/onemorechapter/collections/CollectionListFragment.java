@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.database.entities.Collection;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
 
 import org.jetbrains.annotations.NotNull;
@@ -45,6 +46,11 @@ public class CollectionListFragment extends
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(v -> {
+
+        });
 
         recyclerView = view.findViewById(R.id.collectionListView);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));

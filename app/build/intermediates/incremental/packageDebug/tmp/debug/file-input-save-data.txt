@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Mar 27 17:53:17 YEKT 2019
+#Sat Mar 30 17:06:47 YEKT 2019
 5.base=C\:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 22.path=lib/arm64-v8a/libmodpdfium.so
 32.set=NATIVE_RESOURCE

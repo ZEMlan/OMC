@@ -10,6 +10,7 @@ import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.onemorechapter.database.entities.Book;
 import io.reactivex.Flowable;
 import java.lang.Exception;
+import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -35,11 +36,15 @@ public final class IBookDao_Impl implements IBookDao {
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Book value) {
-        stmt.bindLong(1, value.bookKey);
-        if (value.path == null) {
+        if (value.getBookKey() == null) {
+          stmt.bindNull(1);
+        } else {
+          stmt.bindLong(1, value.getBookKey());
+        }
+        if (value.getPath() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.path);
+          stmt.bindString(2, value.getPath());
         }
       }
     };
@@ -51,16 +56,31 @@ public final class IBookDao_Impl implements IBookDao {
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Book value) {
-        stmt.bindLong(1, value.bookKey);
+        if (value.getBookKey() == null) {
+          stmt.bindNull(1);
+        } else {
+          stmt.bindLong(1, value.getBookKey());
+        }
       }
     };
   }
 
   @Override
-  public void insert(List<Book> books) {
+  public void insertMany(List<Book> books) {
     __db.beginTransaction();
     try {
       __insertionAdapterOfBook.insert(books);
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void insert(Book book) {
+    __db.beginTransaction();
+    try {
+      __insertionAdapterOfBook.insert(book);
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
@@ -92,9 +112,15 @@ public final class IBookDao_Impl implements IBookDao {
           final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
           while(_cursor.moveToNext()) {
             final Book _item;
-            _item = new Book();
-            _item.bookKey = _cursor.getInt(_cursorIndexOfBookKey);
-            _item.path = _cursor.getString(_cursorIndexOfPath);
+            final Integer _tmpBookKey;
+            if (_cursor.isNull(_cursorIndexOfBookKey)) {
+              _tmpBookKey = null;
+            } else {
+              _tmpBookKey = _cursor.getInt(_cursorIndexOfBookKey);
+            }
+            final String _tmpPath;
+            _tmpPath = _cursor.getString(_cursorIndexOfPath);
+            _item = new Book(_tmpBookKey,_tmpPath);
             _result.add(_item);
           }
           return _result;
@@ -108,28 +134,5 @@ public final class IBookDao_Impl implements IBookDao {
         _statement.release();
       }
     });
-  }
-
-  @Override
-  public boolean isExist(int bookId) {
-    final String _sql = "SELECT EXISTS (SELECT * FROM books WHERE bookKey = ? LIMIT 1)";
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
-    int _argIndex = 1;
-    _statement.bindLong(_argIndex, bookId);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final boolean _result;
-      if(_cursor.moveToFirst()) {
-        final int _tmp;
-        _tmp = _cursor.getInt(0);
-        _result = _tmp != 0;
-      } else {
-        _result = false;
-      }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
   }
 }

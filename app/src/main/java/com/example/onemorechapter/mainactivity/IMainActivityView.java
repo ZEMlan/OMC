@@ -18,7 +18,5 @@ public interface IMainActivityView extends MvpView{
 
     void setTitle(String title);
 
-    void onBackPressedLibrary();
-
     void onBackPressedOthers();
 }

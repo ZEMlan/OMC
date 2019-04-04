@@ -40,12 +40,12 @@ public final class AppDatabase_Impl extends AppDatabase {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `books` (`bookKey` INTEGER NOT NULL, `path` TEXT, PRIMARY KEY(`bookKey`))");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `collections` (`collectionKey` INTEGER NOT NULL, `name` TEXT, PRIMARY KEY(`collectionKey`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `collections` (`collectionKey` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`collectionKey`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `book_collection_join` (`collectionId` INTEGER NOT NULL, `bookId` INTEGER NOT NULL, PRIMARY KEY(`collectionId`, `bookId`), FOREIGN KEY(`collectionId`) REFERENCES `collections`(`collectionKey`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`bookId`) REFERENCES `books`(`bookKey`) ON UPDATE NO ACTION ON DELETE CASCADE )");
         _db.execSQL("CREATE  INDEX `index_book_collection_join_collectionId` ON `book_collection_join` (`collectionId`)");
         _db.execSQL("CREATE  INDEX `index_book_collection_join_bookId` ON `book_collection_join` (`bookId`)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b56893e14e53dbc44f7d43d47dbd5c88\")");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"37488c39da4a8609e777055626f7370d\")");
       }
 
       @Override
@@ -92,7 +92,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         final HashMap<String, TableInfo.Column> _columnsCollections = new HashMap<String, TableInfo.Column>(2);
         _columnsCollections.put("collectionKey", new TableInfo.Column("collectionKey", "INTEGER", true, 1));
-        _columnsCollections.put("name", new TableInfo.Column("name", "TEXT", false, 0));
+        _columnsCollections.put("name", new TableInfo.Column("name", "TEXT", true, 0));
         final HashSet<TableInfo.ForeignKey> _foreignKeysCollections = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesCollections = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoCollections = new TableInfo("collections", _columnsCollections, _foreignKeysCollections, _indicesCollections);
@@ -119,7 +119,7 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Found:\n" + _existingBookCollectionJoin);
         }
       }
-    }, "b56893e14e53dbc44f7d43d47dbd5c88", "54ecb994523fce1f952d8962fb0fa2a9");
+    }, "37488c39da4a8609e777055626f7370d", "8ede8d98b3751422464521fcad786f9a");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

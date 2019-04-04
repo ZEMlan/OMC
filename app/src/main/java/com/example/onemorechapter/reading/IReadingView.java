@@ -6,9 +6,11 @@ interface IReadingView extends MvpView {
 
     void openPdf();
 
-    void openTxt();
+    void openTxt(String s);
 
     void openFb2();
 
     void openEpub();
+
+    void showLoading();
 }

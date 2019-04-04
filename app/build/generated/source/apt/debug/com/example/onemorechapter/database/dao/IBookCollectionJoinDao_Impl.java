@@ -12,6 +12,7 @@ import com.example.onemorechapter.database.entities.BookCollectionJoin;
 import com.example.onemorechapter.database.entities.Collection;
 import io.reactivex.Flowable;
 import java.lang.Exception;
+import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -32,13 +33,21 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
     this.__insertionAdapterOfBookCollectionJoin = new EntityInsertionAdapter<BookCollectionJoin>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `book_collection_join`(`collectionId`,`bookId`) VALUES (?,?)";
+        return "INSERT OR IGNORE INTO `book_collection_join`(`collectionId`,`bookId`) VALUES (?,?)";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, BookCollectionJoin value) {
-        stmt.bindLong(1, value.collectionId);
-        stmt.bindLong(2, value.bookId);
+        if (value.getCollectionId() == null) {
+          stmt.bindNull(1);
+        } else {
+          stmt.bindLong(1, value.getCollectionId());
+        }
+        if (value.getBookId() == null) {
+          stmt.bindNull(2);
+        } else {
+          stmt.bindLong(2, value.getBookId());
+        }
       }
     };
     this.__deletionAdapterOfBookCollectionJoin = new EntityDeletionOrUpdateAdapter<BookCollectionJoin>(__db) {
@@ -49,14 +58,33 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
 
       @Override
       public void bind(SupportSQLiteStatement stmt, BookCollectionJoin value) {
-        stmt.bindLong(1, value.collectionId);
-        stmt.bindLong(2, value.bookId);
+        if (value.getCollectionId() == null) {
+          stmt.bindNull(1);
+        } else {
+          stmt.bindLong(1, value.getCollectionId());
+        }
+        if (value.getBookId() == null) {
+          stmt.bindNull(2);
+        } else {
+          stmt.bindLong(2, value.getBookId());
+        }
       }
     };
   }
 
   @Override
-  public void insert(List<BookCollectionJoin> collectionJoin) {
+  public void insert(BookCollectionJoin join) {
+    __db.beginTransaction();
+    try {
+      __insertionAdapterOfBookCollectionJoin.insert(join);
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void insertMany(List<BookCollectionJoin> collectionJoin) {
     __db.beginTransaction();
     try {
       __insertionAdapterOfBookCollectionJoin.insert(collectionJoin);
@@ -67,10 +95,21 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
   }
 
   @Override
-  public void delet(List<BookCollectionJoin> bookCollectionJoins) {
+  public void deleteMany(List<BookCollectionJoin> bookCollectionJoins) {
     __db.beginTransaction();
     try {
       __deletionAdapterOfBookCollectionJoin.handleMultiple(bookCollectionJoins);
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void delete(BookCollectionJoin join) {
+    __db.beginTransaction();
+    try {
+      __deletionAdapterOfBookCollectionJoin.handle(join);
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
@@ -93,9 +132,15 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
           final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
           while(_cursor.moveToNext()) {
             final Book _item;
-            _item = new Book();
-            _item.bookKey = _cursor.getInt(_cursorIndexOfBookKey);
-            _item.path = _cursor.getString(_cursorIndexOfPath);
+            final Integer _tmpBookKey;
+            if (_cursor.isNull(_cursorIndexOfBookKey)) {
+              _tmpBookKey = null;
+            } else {
+              _tmpBookKey = _cursor.getInt(_cursorIndexOfBookKey);
+            }
+            final String _tmpPath;
+            _tmpPath = _cursor.getString(_cursorIndexOfPath);
+            _item = new Book(_tmpBookKey,_tmpPath);
             _result.add(_item);
           }
           return _result;
@@ -130,7 +175,13 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
             final String _tmpName;
             _tmpName = _cursor.getString(_cursorIndexOfName);
             _item = new Collection(_tmpName);
-            _item.collectionKey = _cursor.getInt(_cursorIndexOfCollectionKey);
+            final Integer _tmpCollectionKey;
+            if (_cursor.isNull(_cursorIndexOfCollectionKey)) {
+              _tmpCollectionKey = null;
+            } else {
+              _tmpCollectionKey = _cursor.getInt(_cursorIndexOfCollectionKey);
+            }
+            _item.setCollectionKey(_tmpCollectionKey);
             _result.add(_item);
           }
           return _result;

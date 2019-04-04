@@ -9,8 +9,6 @@ import com.example.onemorechapter.database.entities.Book;
 import com.example.onemorechapter.database.entities.BookCollectionJoin;
 import com.example.onemorechapter.database.entities.Collection;
 
-import java.util.List;
-
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -43,15 +41,6 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    private static void insertData(final AppDatabase database, final List<Book> books,
-                                   final List<Collection> collections,
-                                   final List<BookCollectionJoin> joinList) {
-        database.runInTransaction(() -> {
-            database.bookDao().insert(books);
-            database.collectionDao().insert(collections);
-            database.bookCollectionJoinDao().insert(joinList);
-        });
-    }
 
     private void updateDatabaseCreated(final Context context) {
         if (context.getDatabasePath(DATABASE_NAME).exists()) {
