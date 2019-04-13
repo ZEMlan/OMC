@@ -32,6 +32,9 @@ public interface IBookCollectionJoinDao {
     "book_collection_join.bookId=:targetBookId")
     Flowable<List<Collection>> getCollectionsForBook(int targetBookId);
 
+    @Query("UPDATE book_collection_join SET collectionId=:newNameHash WHERE collectionId=:oldNameHash")
+    void updateName(int oldNameHash, int newNameHash);
+
     @Delete
     void deleteMany(List<BookCollectionJoin> bookCollectionJoins);
 

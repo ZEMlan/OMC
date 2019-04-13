@@ -35,7 +35,7 @@ public class Constants {
 
     public static final String LIBRARY = "library";
 
-    public static final String READING = "reading";
+    public static final String READING = "fragment_reading";
 
     public static final String FAVOURITE = "favourite";
 
@@ -43,7 +43,7 @@ public class Constants {
 
     public static final String OTHERS = "others";
 
-    public static final int READ_REQUEST_CODE = 42;
+    public static final int REQUEST_CODE_PICK_MANY_FILES = 2;
 
     public static final int REQUEST_CODE_PICK_FILE = 1;
 }

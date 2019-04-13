@@ -104,11 +104,6 @@ public class DataRepository {
                 .subscribe();
     }
 
-    /**
-     * Get the list of books and collections from the database
-     * and get notified when the data changes.
-     */
-
     public Flowable<List<Collection>> getAllCollections() {
         return db.collectionDao().getAll();
     }
@@ -127,5 +122,18 @@ public class DataRepository {
 
     public void delete(BookCollectionJoin join) {
         db.bookCollectionJoinDao().delete(join);
+    }
+
+    public void delete(Collection collection) {
+        db.collectionDao().delete(collection);
+    }
+
+    public void delete(Book book) {
+        db.bookDao().delete(book);
+    }
+
+    public void renameCollection(Collection collection, String newName){
+        collectionDao.updateName(collection.getName(), newName);
+        bookCollectionJoinDao.updateName(collection.getCollectionKey(), newName.hashCode());
     }
 }

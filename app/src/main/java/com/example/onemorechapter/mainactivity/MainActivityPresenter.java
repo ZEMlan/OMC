@@ -99,11 +99,6 @@ class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>
                     getView().setTitle("Collections");
                 }
                 break;
-            default:
-                if(isViewAttached){
-                    getView().showBooksFragment(new Collection(fragment));
-                    getView().setTitle(fragment);
-                }
         }
     }
 }

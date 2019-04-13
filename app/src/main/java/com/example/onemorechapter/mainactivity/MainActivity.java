@@ -1,16 +1,19 @@
 package com.example.onemorechapter.mainactivity;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.StartFragment;
-import com.example.onemorechapter.collections.BooksFragment;
-import com.example.onemorechapter.collections.CollectionListFragment;
+import com.example.onemorechapter.collections.books.BooksFragment;
+import com.example.onemorechapter.collections.collectionlist.CollectionListFragment;
+import com.example.onemorechapter.database.entities.Book;
 import com.example.onemorechapter.database.entities.Collection;
 import com.example.onemorechapter.model.App;
 import com.example.onemorechapter.reading.ReadingFragment;
@@ -18,6 +21,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,10 +33,12 @@ import androidx.documentfile.provider.DocumentFile;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
+import static com.example.onemorechapter.model.Constants.BOOKS;
 import static com.example.onemorechapter.model.Constants.COLLECTIONS;
 import static com.example.onemorechapter.model.Constants.OTHERS;
 import static com.example.onemorechapter.model.Constants.READING;
 import static com.example.onemorechapter.model.Constants.REQUEST_CODE_PICK_FILE;
+import static com.example.onemorechapter.model.Constants.REQUEST_CODE_PICK_MANY_FILES;
 import static com.example.onemorechapter.model.Constants.START;
 import static com.example.onemorechapter.model.Constants.TARGET_FRAGMENT;
 
@@ -50,12 +57,30 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == REQUEST_CODE_PICK_FILE  && resultCode == Activity.RESULT_OK) {
-            Uri singleData = null;
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_PICK_FILE && resultCode == Activity.RESULT_OK) {
+            Uri singleData;
             if (data != null) {
                 singleData = data.getData();
                 App.getInstance().setCurrentDir(DocumentFile.fromSingleUri(this, singleData));
                 showReadingFragment();
+            }
+        }
+        if(requestCode == REQUEST_CODE_PICK_MANY_FILES && resultCode == Activity.RESULT_OK){
+            if (data != null) {
+                Uri uri = data.getData();
+                ArrayList<Book> books = new ArrayList<>();
+                final ContentResolver resolver = this.getContentResolver();
+                try {
+                   Cursor cursor = resolver.query(uri, null, null, null, null);
+                    int indexFile = cursor.getColumnIndex("uri");
+                   while (!cursor.isNull(0) && cursor.moveToNext()){
+                        books.add(new Book(DocumentFile.fromSingleUri(this, Uri.parse(cursor.getString(indexFile)))));
+                   }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                App.getInstance().getDataRepository().insertBooks(books);
             }
         }
     }
@@ -162,7 +187,7 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         fragmentManager.beginTransaction()
                 .replace(R.id.frame, collectionFragment)
                 .commitAllowingStateLoss();
-        targetFragment = OTHERS;
+        targetFragment = COLLECTIONS;
         drawer.closeDrawer(GravityCompat.START);
     }
 
@@ -170,14 +195,14 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
     public void showBooksFragment(Collection collection) {
         BooksFragment booksFragment = new BooksFragment();
         Bundle bundle = new Bundle();
-        bundle.putSerializable(COLLECTIONS, collection);
+        bundle.putSerializable(OTHERS, collection);
         fragmentManager = getSupportFragmentManager();
         booksFragment.setArguments(bundle);
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.frame, booksFragment)
                 .commitAllowingStateLoss();
-        targetFragment = collection.getName();
+        targetFragment = OTHERS;
         drawer.closeDrawer(GravityCompat.START);
     }
 
@@ -190,7 +215,9 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
 
     @Override
     public void onBackPressed() {
-        getPresenter().onBackPressed("other");
+        if(targetFragment.equals(OTHERS)) {
+            getPresenter().onBackPressed("other");
+        }
     }
 
     @Override
@@ -200,7 +227,7 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
 
     @Override
     public void onBackPressedOthers() {
-
+        showCollectionListFragment();
     }
 
 

@@ -6,6 +6,7 @@ import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
 import androidx.room.RxRoom;
+import androidx.room.SharedSQLiteStatement;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.onemorechapter.database.entities.Collection;
 import io.reactivex.Flowable;
@@ -25,6 +26,8 @@ public final class ICollectionDao_Impl implements ICollectionDao {
   private final EntityInsertionAdapter __insertionAdapterOfCollection;
 
   private final EntityDeletionOrUpdateAdapter __deletionAdapterOfCollection;
+
+  private final SharedSQLiteStatement __preparedStmtOfUpdateName;
 
   public ICollectionDao_Impl(RoomDatabase __db) {
     this.__db = __db;
@@ -63,6 +66,13 @@ public final class ICollectionDao_Impl implements ICollectionDao {
         }
       }
     };
+    this.__preparedStmtOfUpdateName = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "UPDATE collections SET name=? WHERE name=?";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -88,13 +98,49 @@ public final class ICollectionDao_Impl implements ICollectionDao {
   }
 
   @Override
-  public void delete(List<Collection> collections) {
+  public void deleteMany(List<Collection> collections) {
     __db.beginTransaction();
     try {
       __deletionAdapterOfCollection.handleMultiple(collections);
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void delete(Collection collection) {
+    __db.beginTransaction();
+    try {
+      __deletionAdapterOfCollection.handle(collection);
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void updateName(String oldName, String newName) {
+    final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateName.acquire();
+    __db.beginTransaction();
+    try {
+      int _argIndex = 1;
+      if (newName == null) {
+        _stmt.bindNull(_argIndex);
+      } else {
+        _stmt.bindString(_argIndex, newName);
+      }
+      _argIndex = 2;
+      if (oldName == null) {
+        _stmt.bindNull(_argIndex);
+      } else {
+        _stmt.bindString(_argIndex, oldName);
+      }
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfUpdateName.release(_stmt);
     }
   }
 

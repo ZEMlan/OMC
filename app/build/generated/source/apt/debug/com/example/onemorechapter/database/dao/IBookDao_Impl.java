@@ -88,10 +88,21 @@ public final class IBookDao_Impl implements IBookDao {
   }
 
   @Override
-  public void delete(List<Book> books) {
+  public void deleteMany(List<Book> books) {
     __db.beginTransaction();
     try {
       __deletionAdapterOfBook.handleMultiple(books);
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void delete(Book book) {
+    __db.beginTransaction();
+    try {
+      __deletionAdapterOfBook.handle(book);
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();

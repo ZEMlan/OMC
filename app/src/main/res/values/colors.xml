@@ -15,4 +15,5 @@
     <color name="textColorDark">#6D3F01</color>
     <color name="textColorLight">#F7F3CD</color>
     <color name="headerDarkColor">#848F0808</color>
+    <color name="headerDarkColorFull">#851522</color>
 </resources>

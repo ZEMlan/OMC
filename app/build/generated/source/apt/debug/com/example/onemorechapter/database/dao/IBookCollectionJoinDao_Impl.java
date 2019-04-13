@@ -6,6 +6,7 @@ import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
 import androidx.room.RxRoom;
+import androidx.room.SharedSQLiteStatement;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.onemorechapter.database.entities.Book;
 import com.example.onemorechapter.database.entities.BookCollectionJoin;
@@ -27,6 +28,8 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
   private final EntityInsertionAdapter __insertionAdapterOfBookCollectionJoin;
 
   private final EntityDeletionOrUpdateAdapter __deletionAdapterOfBookCollectionJoin;
+
+  private final SharedSQLiteStatement __preparedStmtOfUpdateName;
 
   public IBookCollectionJoinDao_Impl(RoomDatabase __db) {
     this.__db = __db;
@@ -68,6 +71,13 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
         } else {
           stmt.bindLong(2, value.getBookId());
         }
+      }
+    };
+    this.__preparedStmtOfUpdateName = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "UPDATE book_collection_join SET collectionId=? WHERE collectionId=?";
+        return _query;
       }
     };
   }
@@ -113,6 +123,23 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void updateName(int oldNameHash, int newNameHash) {
+    final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateName.acquire();
+    __db.beginTransaction();
+    try {
+      int _argIndex = 1;
+      _stmt.bindLong(_argIndex, newNameHash);
+      _argIndex = 2;
+      _stmt.bindLong(_argIndex, oldNameHash);
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfUpdateName.release(_stmt);
     }
   }
 

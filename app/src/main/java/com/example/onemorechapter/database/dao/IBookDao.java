@@ -2,6 +2,7 @@ package com.example.onemorechapter.database.dao;
 
 
 import com.example.onemorechapter.database.entities.Book;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public interface IBookDao {
     void insert(Book book);
 
     @Delete
-    void delete(List<Book> books);
+    void deleteMany(List<Book> books);
 
+    @Delete
+    void delete(Book book);
 }

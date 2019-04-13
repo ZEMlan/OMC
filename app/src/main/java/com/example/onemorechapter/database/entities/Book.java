@@ -1,5 +1,8 @@
 package com.example.onemorechapter.database.entities;
 
+import android.net.Uri;
+import android.print.PrintDocumentInfo;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +28,7 @@ public class Book implements Serializable {
     @Ignore
     private boolean isFavourite, isRead;
     @Ignore
-    private DocumentFile documentFile;
+    private String uri;
     @Ignore
     private String type;
 
@@ -40,7 +43,7 @@ public class Book implements Serializable {
         size = file.length()/8192; //file size in MB (1024*8)
         path = String.valueOf(file.getUri());
         bookKey = path.hashCode();
-        documentFile = file;
+        uri = file.getUri().toString();
     }
 
     @NonNull
@@ -114,15 +117,12 @@ public class Book implements Serializable {
         return res;
     }
 
-    public DocumentFile getDocumentFile() {
-        return documentFile;
-    }
-
-    public void setDocumentFile(DocumentFile documentFile) {
-        this.documentFile = documentFile;
-    }
 
     public String getType() {
         return name.substring(name.indexOf("."));
+    }
+
+    public Uri getUri() {
+        return Uri.parse(uri);
     }
 }

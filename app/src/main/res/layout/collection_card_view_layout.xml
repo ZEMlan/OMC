@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/mtrl_card_spacing"
         android:layout_marginTop="@dimen/mtrl_card_spacing"
         android:layout_marginRight="@dimen/mtrl_card_spacing"
@@ -17,41 +18,40 @@
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_width="393dp"
+            android:layout_height="65dp"
             android:background="?selectableItemBackground"
             android:focusable="true">
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="48dp"
-                android:layout_height="46dp"
+                android:layout_width="49dp"
+                android:layout_height="39dp"
                 android:layout_margin="5dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="4dp"
-                android:background="@color/cardBackgroundOchre"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:adjustViewBounds="false"
+                android:foregroundTintMode="src_atop"
+                android:tint="@color/secondaryDarkColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/image_book_cat" />
+                app:srcCompat="@drawable/book_multiple_variant" />
 
             <TextView
                 android:id="@+id/collectionName"
-                android:layout_width="296dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="293dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/roboto"
                 android:text="Collection's name"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
-                android:textColor="@color/textColorDark"
+                android:textColor="@color/textColor"
                 android:textSize="17sp"
                 android:typeface="sans"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.363"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toTopOf="parent" />
 
