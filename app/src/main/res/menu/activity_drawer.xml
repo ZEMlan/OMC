@@ -9,10 +9,6 @@
             android:icon="@drawable/star"
             android:title="Стартовая страница" />
         <item
-            android:id="@+id/nav_lib"
-            android:icon="@drawable/dip_switch"
-            android:title="Библиотека" />
-        <item
             android:id="@+id/nav_reading"
             android:icon="@drawable/book_open_page_variant"
             android:title="Читаю сейчас" />
@@ -31,7 +27,7 @@
                 android:title="Прочитанно" />
             <item
                 android:id="@+id/nav_other"
-                android:icon="@drawable/book_multiple_variant"
+                android:icon="@drawable/dip_switch"
                 android:title="Другие"/>
             </group>
         </menu>

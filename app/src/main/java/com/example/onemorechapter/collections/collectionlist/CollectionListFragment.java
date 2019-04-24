@@ -29,6 +29,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import static com.example.onemorechapter.model.Constants.COLLECTIONS;
+import static com.example.onemorechapter.model.Constants.FAVOURITE;
+import static com.example.onemorechapter.model.Constants.HAVE_READ;
 
 
 public class CollectionListFragment extends
@@ -167,40 +169,42 @@ public class CollectionListFragment extends
     }
 
     private void enableSwipeToDeleteAndUndo() {
-        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(App.getInstance()) {
+        SwipeToDeleteAndEditCallback swipeToDeleteAndEditCallback = new SwipeToDeleteAndEditCallback(App.getInstance()) {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
+                final Collection item = adapter.getCollections().get(position);
 
-                if (direction == ItemTouchHelper.LEFT) {
-                    final Collection item = adapter.getCollections().get(position);
+                if(!item.getName().equals(FAVOURITE) && !item.getName().equals(HAVE_READ)) {
+                    if (direction == ItemTouchHelper.LEFT) {
+                        adapter.removeItem(position);
+                        getPresenter().deleteCollection(item);
 
-                    adapter.removeItem(position);
-                    getPresenter().deleteCollection(item);
-
-                    Snackbar snackbar = Snackbar
-                            .make(layout, "Коллекция удалена успешно.", Snackbar.LENGTH_SHORT);
-                    snackbar.setAction("ОТМЕНИТЬ", view -> {
-
-                        adapter.restoreItem(item, position);
-                        recyclerView.scrollToPosition(position);
-                        getPresenter().addCollection(item);
-                    });
-                    snackbar.setActionTextColor(getResources().getColor(R.color.secondaryLightColor));
+                        Snackbar snackbar = Snackbar
+                                .make(layout, "Коллекция удалена успешно.", Snackbar.LENGTH_SHORT);
+                        snackbar.setAction("ОТМЕНИТЬ", view -> {
+                            adapter.restoreItem(item, position);
+                            recyclerView.scrollToPosition(position);
+                            getPresenter().addCollection(item);
+                        });
+                        snackbar.setActionTextColor(getResources().getColor(R.color.secondaryLightColor));
+                        snackbar.show();
+                    }
+                    if (direction == ItemTouchHelper.RIGHT) {
+                        editDialog(item, position).show();
+                    }
+                }else{
+                    Snackbar snackbar = Snackbar.make(getView(), "Эта коллекция неизменяема", Snackbar.LENGTH_SHORT);
                     snackbar.show();
-                }
-                if (direction == ItemTouchHelper.RIGHT){
-                    final Collection item = adapter.getCollections().get(position);
-
                     adapter.removeItem(position);
-
-                    editDialog(item, position).show();
+                    adapter.restoreItem(item, position);
+                    recyclerView.scrollToPosition(position);
                 }
             }
         };
 
-        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteAndEditCallback);
         itemTouchhelper.attachToRecyclerView(recyclerView);
     }
 

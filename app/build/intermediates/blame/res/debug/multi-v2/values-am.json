@@ -4,7 +4,7 @@
             "outputFile": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0-alpha04.aar\\2c0534003bc997b856e1fcb4ab145758\\res\\values-am\\values-am.xml",
+                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\values-am\\values-am.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.1.0-alpha05.aar\\bc60fcb491f7422b6617a726a8740cd4\\res\\values-am\\values-am.xml",
+                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\7e65db39675f20ad4c7b24ecfa419444\\res\\values-am\\values-am.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

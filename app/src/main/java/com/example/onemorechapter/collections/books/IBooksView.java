@@ -8,5 +8,8 @@ import java.util.ArrayList;
 
 interface IBooksView extends MvpView {
 
+    //void getBook(Book book);
+
     void getBooks(ArrayList<Book> books);
+
 }

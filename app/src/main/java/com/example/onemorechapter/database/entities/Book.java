@@ -2,6 +2,7 @@ package com.example.onemorechapter.database.entities;
 
 import android.net.Uri;
 import android.print.PrintDocumentInfo;
+import android.widget.ScrollView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,31 +20,23 @@ public class Book implements Serializable {
     @PrimaryKey
     @NonNull
     private Integer bookKey;
-    @Ignore
+    @ColumnInfo
     private String name;
-    @ColumnInfo(name = "path")
-    private String path;
-    @Ignore
-    private long size;
-    @Ignore
-    private boolean isFavourite, isRead;
-    @Ignore
+    @ColumnInfo
     private String uri;
-    @Ignore
-    private String type;
 
-    public Book(@NonNull Integer bookKey, String path) {
+
+    public Book(@NonNull Integer bookKey, String uri, String name) {
         this.bookKey = bookKey;
-        this.path = path;
+        this.uri = uri;
+        this.name = name;
     }
 
     @Ignore
     public Book(DocumentFile file) {
         name = file.getName();
-        size = file.length()/8192; //file size in MB (1024*8)
-        path = String.valueOf(file.getUri());
-        bookKey = path.hashCode();
         uri = file.getUri().toString();
+        bookKey = uri.hashCode();
     }
 
     @NonNull
@@ -63,38 +56,13 @@ public class Book implements Serializable {
         this.name = name;
     }
 
-    public String getPath() {
-        return path;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public String getUri(){
+        return uri;
     }
-
-    public long getSize() {
-        return size;
-    }
-
-    public void setSize(long size) {
-        this.size = size;
-    }
-
-    public boolean isFavourite() {
-        return isFavourite;
-    }
-
-    public void setFavourite(boolean favourite) {
-        isFavourite = favourite;
-    }
-
-    public boolean isRead() {
-        return isRead;
-    }
-
-    public void setRead(boolean read) {
-        isRead = read;
-    }
-
 
     static public ArrayList<Book> getBookArray(DocumentFile[] files){
         if(files == null){
@@ -119,10 +87,11 @@ public class Book implements Serializable {
 
 
     public String getType() {
-        return name.substring(name.indexOf("."));
+        return name.substring(name.lastIndexOf('.'));
     }
 
-    public Uri getUri() {
+    public Uri getUriAsUri() {
         return Uri.parse(uri);
     }
+
 }

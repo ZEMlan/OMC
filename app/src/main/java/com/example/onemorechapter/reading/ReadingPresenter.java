@@ -1,19 +1,18 @@
 package com.example.onemorechapter.reading;
 
-import android.content.Context;
 import android.net.Uri;
 
 import com.example.onemorechapter.database.entities.Book;
 import com.example.onemorechapter.model.App;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
+import com.kursx.parser.fb2.FictionBook;
 
 import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-import androidx.documentfile.provider.DocumentFile;
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -21,31 +20,26 @@ import io.reactivex.schedulers.Schedulers;
 
 class ReadingPresenter extends MvpBasePresenter<IReadingView> {
 
-    void loadBook(String type) throws IOException {
-        boolean isViewAttached = isViewAttached();
-        switch (type) {
+    void loadBook(Book book){
+        if(isViewAttached()){
+            getView().showLoading();
+        }
+        switch (book.getType()) {
             case ".pdf":
-                if (isViewAttached) {
-                    getView().openPdf();
-                }
+                getView().openPdf();
                 break;
             case ".doc":
             case ".docx":
             case ".txt":
-                if (isViewAttached) {
-                    getView().showLoading();
-                    readTextFromUri(App.getInstance().getCurrentDir().getUri(), type);
-                }
+            case ".html":
+            case ".xml":
+                readTextFromUri(book.getUriAsUri(), book.getType());
                 break;
             case ".fb2":
-                if (isViewAttached) {
-                    getView().openFb2();
-                }
+               // readFb2(App.getInstance().getCurrentBook().getUri());
                 break;
             case ".epub":
-                if (isViewAttached) {
-                    getView().openEpub();
-                }
+                getView().openEpub();
                 break;
         }
     }
@@ -54,7 +48,7 @@ class ReadingPresenter extends MvpBasePresenter<IReadingView> {
         Single.create((SingleEmitter<String> emitter) -> {
             InputStream inputStream = App.getInstance().getContentResolver().openInputStream(uri);
             BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    inputStream,"ISO-8859-5"));
+                    inputStream, StandardCharsets.UTF_8));
 
             StringBuilder stringBuilder = new StringBuilder();
             String line;
@@ -75,6 +69,17 @@ class ReadingPresenter extends MvpBasePresenter<IReadingView> {
                 .doOnSuccess(s -> getView().openTxt(s))
                 .subscribe();
 
+    }
+
+    private void readFb2(Uri uri) {
+        Single.create((SingleEmitter<FictionBook> emitter) -> {
+            File temp = new File(uri.getPath());
+            FictionBook fb2 = new FictionBook(new File(temp.getAbsolutePath()));
+            emitter.onSuccess(fb2);
+        }).subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess(s -> getView().openFb2(s))
+                .subscribe();
     }
 
 }

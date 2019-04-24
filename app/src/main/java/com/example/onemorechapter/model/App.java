@@ -17,7 +17,7 @@ public class App extends Application {
 
     DataRepository dataRepository;
 
-    private DocumentFile currentDir;
+    private DocumentFile currentBook;
 
     @Override
     public void onCreate() {
@@ -44,12 +44,12 @@ public class App extends Application {
         return dataRepository;
     }
 
-    public DocumentFile getCurrentDir() {
-        return currentDir;
+    public DocumentFile getCurrentBook() {
+        return currentBook;
     }
 
-    public void setCurrentDir(DocumentFile currentDir) {
-        this.currentDir = currentDir;
+    public void setCurrentBook(DocumentFile currentBook) {
+        this.currentBook = currentBook;
     }
 
 }

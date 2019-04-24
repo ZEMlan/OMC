@@ -31,7 +31,7 @@ public final class IBookDao_Impl implements IBookDao {
     this.__insertionAdapterOfBook = new EntityInsertionAdapter<Book>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR IGNORE INTO `books`(`bookKey`,`path`) VALUES (?,?)";
+        return "INSERT OR IGNORE INTO `books`(`bookKey`,`name`,`uri`) VALUES (?,?,?)";
       }
 
       @Override
@@ -41,10 +41,15 @@ public final class IBookDao_Impl implements IBookDao {
         } else {
           stmt.bindLong(1, value.getBookKey());
         }
-        if (value.getPath() == null) {
+        if (value.getName() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.getPath());
+          stmt.bindString(2, value.getName());
+        }
+        if (value.getUri() == null) {
+          stmt.bindNull(3);
+        } else {
+          stmt.bindString(3, value.getUri());
         }
       }
     };
@@ -119,7 +124,8 @@ public final class IBookDao_Impl implements IBookDao {
         final Cursor _cursor = __db.query(_statement);
         try {
           final int _cursorIndexOfBookKey = _cursor.getColumnIndexOrThrow("bookKey");
-          final int _cursorIndexOfPath = _cursor.getColumnIndexOrThrow("path");
+          final int _cursorIndexOfName = _cursor.getColumnIndexOrThrow("name");
+          final int _cursorIndexOfUri = _cursor.getColumnIndexOrThrow("uri");
           final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
           while(_cursor.moveToNext()) {
             final Book _item;
@@ -129,9 +135,11 @@ public final class IBookDao_Impl implements IBookDao {
             } else {
               _tmpBookKey = _cursor.getInt(_cursorIndexOfBookKey);
             }
-            final String _tmpPath;
-            _tmpPath = _cursor.getString(_cursorIndexOfPath);
-            _item = new Book(_tmpBookKey,_tmpPath);
+            final String _tmpName;
+            _tmpName = _cursor.getString(_cursorIndexOfName);
+            final String _tmpUri;
+            _tmpUri = _cursor.getString(_cursorIndexOfUri);
+            _item = new Book(_tmpBookKey,_tmpUri,_tmpName);
             _result.add(_item);
           }
           return _result;

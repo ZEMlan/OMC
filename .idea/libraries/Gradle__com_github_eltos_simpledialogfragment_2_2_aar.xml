@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.eltos:simpledialogfragment:2.2@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a241cc114020ba18d89f867cfc36a62d/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a241cc114020ba18d89f867cfc36a62d/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.eltos/simpledialogfragment/2.2/7f92545577addaa90bcb5e218496e428d7cdd981/simpledialogfragment-2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

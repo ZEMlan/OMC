@@ -42,33 +42,6 @@ public class DataRepository {
         return sInstance;
     }
 
-    public void insertManyData(final List<Book> books,
-                                   final Collection collection,
-                                   final List<BookCollectionJoin> joinList) {
-        db.runInTransaction( () -> {
-            bookDao.insertMany(books);
-            collectionDao.insert(collection);
-            bookCollectionJoinDao.insertMany(joinList);
-        });
-    }
-
-    public void insertData(final Book book,
-                                final Collection collection,
-                                final BookCollectionJoin join) {
-        db.runInTransaction( () -> {
-            bookDao.insert(book);
-            collectionDao.insert(collection);
-            bookCollectionJoinDao.insert(join);
-        });
-    }
-
-    public void insertCollections(List<Collection> collections){
-        Completable.create( emitter -> collectionDao.insertMany(collections))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
-    }
-
     public void insertCollection(Collection collection) {
         Completable.create( emitter -> collectionDao.insert(collection))
                 .subscribeOn(Schedulers.io())
@@ -110,10 +83,6 @@ public class DataRepository {
 
     public Flowable<List<Book>> loadBooksInCollection(final int collectionID) {
         return db.bookCollectionJoinDao().getBooksForCollection(collectionID);
-    }
-
-    public Flowable<List<Collection>> loadCollectionsForBook(final int bookId) {
-        return db.bookCollectionJoinDao().getCollectionsForBook(bookId) ;
     }
 
     public void deleteMany(List<BookCollectionJoin> joins){

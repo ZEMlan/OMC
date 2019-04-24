@@ -155,7 +155,8 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
         final Cursor _cursor = __db.query(_statement);
         try {
           final int _cursorIndexOfBookKey = _cursor.getColumnIndexOrThrow("bookKey");
-          final int _cursorIndexOfPath = _cursor.getColumnIndexOrThrow("path");
+          final int _cursorIndexOfName = _cursor.getColumnIndexOrThrow("name");
+          final int _cursorIndexOfUri = _cursor.getColumnIndexOrThrow("uri");
           final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
           while(_cursor.moveToNext()) {
             final Book _item;
@@ -165,9 +166,11 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
             } else {
               _tmpBookKey = _cursor.getInt(_cursorIndexOfBookKey);
             }
-            final String _tmpPath;
-            _tmpPath = _cursor.getString(_cursorIndexOfPath);
-            _item = new Book(_tmpBookKey,_tmpPath);
+            final String _tmpName;
+            _tmpName = _cursor.getString(_cursorIndexOfName);
+            final String _tmpUri;
+            _tmpUri = _cursor.getString(_cursorIndexOfUri);
+            _item = new Book(_tmpBookKey,_tmpUri,_tmpName);
             _result.add(_item);
           }
           return _result;

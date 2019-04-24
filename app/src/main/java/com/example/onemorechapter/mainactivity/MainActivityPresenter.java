@@ -1,16 +1,21 @@
 package com.example.onemorechapter.mainactivity;
 
 
+import android.net.Uri;
+
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.database.entities.Collection;
+import com.example.onemorechapter.model.App;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 
 import androidx.annotation.NonNull;
+import androidx.documentfile.provider.DocumentFile;
 
+import static com.example.onemorechapter.model.Constants.BOOKS;
+import static com.example.onemorechapter.model.Constants.COLLECTIONS;
 import static com.example.onemorechapter.model.Constants.FAVOURITE;
 import static com.example.onemorechapter.model.Constants.HAVE_READ;
-import static com.example.onemorechapter.model.Constants.LIBRARY;
 import static com.example.onemorechapter.model.Constants.OTHERS;
 import static com.example.onemorechapter.model.Constants.READING;
 import static com.example.onemorechapter.model.Constants.START;
@@ -19,7 +24,6 @@ class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>
         implements MvpPresenter<IMainActivityView> {
 
     MainActivityPresenter(){
-
     }
 
      void onMenuItemSelected(int id){
@@ -28,12 +32,6 @@ class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>
             if(isViewAttached) {
                 getView().showStartFragment();
                 getView().setTitle("Home");
-            }
-        }
-        if (id == R.id.nav_lib){
-            if(isViewAttached) {
-                getView().showLibraryFragment();
-                getView().setTitle("Library");
             }
         }
         if (id == R.id.nav_reading){
@@ -62,29 +60,14 @@ class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>
         }
     }
 
-    void onBackPressed(String fragmentType){
-        boolean isViewAttached = isViewAttached();
-        switch (fragmentType) {
-            default:
-                if (isViewAttached)
-                    getView().onBackPressedOthers();
-                break;
-        }
-    }
-
     void loadLastFragment(@NonNull String fragment){
         boolean isViewAttached = isViewAttached();
         switch (fragment){
             case START:
+                default:
                 if(isViewAttached) {
                     getView().showStartFragment();
                     getView().setTitle("Home");
-                }
-                break;
-            case LIBRARY:
-                if(isViewAttached) {
-                    getView().showLibraryFragment();
-                    getView().setTitle("Library");
                 }
                 break;
             case READING:
@@ -93,7 +76,7 @@ class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>
                     getView().setTitle("Reading");
                 }
                 break;
-            case OTHERS:
+            case COLLECTIONS:
                 if(isViewAttached) {
                     getView().showCollectionListFragment();
                     getView().setTitle("Collections");
@@ -101,4 +84,5 @@ class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>
                 break;
         }
     }
+
 }

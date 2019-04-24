@@ -1,6 +1,9 @@
 package com.example.onemorechapter.mainactivity;
+import com.example.onemorechapter.database.entities.Book;
 import com.example.onemorechapter.database.entities.Collection;
 import com.hannesdorfmann.mosby.mvp.MvpView;
+
+import java.util.ArrayList;
 
 public interface IMainActivityView extends MvpView{
 
@@ -10,13 +13,10 @@ public interface IMainActivityView extends MvpView{
 
     void showReadingFragment();
 
-    void showLibraryFragment();
-
     void showCollectionListFragment();
 
     void showBooksFragment(Collection collection);
 
     void setTitle(String title);
 
-    void onBackPressedOthers();
 }

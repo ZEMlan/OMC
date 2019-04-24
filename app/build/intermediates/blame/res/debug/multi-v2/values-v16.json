@@ -4,7 +4,17 @@
             "outputFile": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0-alpha04.aar\\2c0534003bc997b856e1fcb4ab145758\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\7e65db39675f20ad4c7b24ecfa419444\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.1.0-alpha05.aar\\bc60fcb491f7422b6617a726a8740cd4\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

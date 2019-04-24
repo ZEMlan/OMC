@@ -1,99 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="115dp"
-        android:layout_marginLeft="@dimen/mtrl_card_spacing"
-        android:layout_marginTop="@dimen/mtrl_card_spacing"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        android:layout_height="0dp"
         app:cardBackgroundColor="@color/cardBackgroundOchre"
         app:cardElevation="4dp"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="80dp"
             android:background="?selectableItemBackground"
             android:focusable="true">
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="78dp"
-                android:layout_height="86dp"
+                android:layout_width="67dp"
+                android:layout_height="70dp"
                 android:layout_margin="5dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.035"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/image_just_one_more_chapter" />
 
             <TextView
                 android:id="@+id/fileName"
                 android:layout_width="282dp"
                 android:layout_height="46dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
                 android:text="Book's file name"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="@color/textColorDark"
-                android:textSize="17sp"
-                android:typeface="sans"
+                android:textSize="14sp"
+                android:typeface="monospace"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.internal.CheckableImageButton
-                android:id="@+id/buttonFav"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="32dp"
-                android:adjustViewBounds="false"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:focusable="true"
-                android:scaleType="fitStart"
-                android:tint="@color/colorMaroon"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/fileName"
-                app:layout_constraintTop_toBottomOf="@+id/fileName"
-                app:layout_constraintVertical_bias="0.7"
-                tools:src="@drawable/heart" />
-
-            <com.google.android.material.internal.CheckableImageButton
-                android:id="@+id/buttonIsRead"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="32dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:focusable="true"
-                android:scaleType="fitStart"
-                android:tint="@color/colorMaroon"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/buttonFav"
-                app:layout_constraintTop_toBottomOf="@+id/fileName"
-                app:layout_constraintVertical_bias="0.0"
-                tools:src="@drawable/check" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

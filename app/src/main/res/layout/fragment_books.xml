@@ -10,9 +10,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/booksRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="vertical"
         tools:listitem="@layout/library_card_view_layout" />
+
     <ImageView
         android:id="@+id/blank"
         android:layout_width="wrap_content"
@@ -23,5 +24,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/no_collections"
         tools:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/plus"
+        android:tint="@color/secondaryTextColor"
+        app:fabSize="normal"
+        app:rippleColor="@color/secondaryColor" />
 
 </FrameLayout>
