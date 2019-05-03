@@ -1,4 +1,7 @@
-#Sun Apr 21 20:41:12 YEKT 2019
+#Fri May 03 16:01:14 YEKT 2019
 base.0=C\:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10
+path.1=classes2.dex
+renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+base.1=C\:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.codetoart:r2-shared-kotlin:1.0.4-2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1a5ae4a1d83650b14b6018c50b1cce24/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1a5ae4a1d83650b14b6018c50b1cce24/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.codetoart/r2-shared-kotlin/1.0.4-2/2baf5c21dc1d6eabbfe0ca8a0d57b2aedfbcd7f3/r2-shared-kotlin-1.0.4-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,5 +1,7 @@
 package com.example.onemorechapter.model;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
 import com.example.onemorechapter.database.AppDatabase;
 import com.example.onemorechapter.database.dao.IBookCollectionJoinDao;
 import com.example.onemorechapter.database.dao.IBookDao;
@@ -15,6 +17,9 @@ import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.example.onemorechapter.model.Constants.FAVOURITE;
+import static com.example.onemorechapter.model.Constants.HAVE_READ;
+
 public class DataRepository {
     private static DataRepository sInstance;
     private AppDatabase db;
@@ -29,6 +34,9 @@ public class DataRepository {
         collectionDao = db.collectionDao();
         bookCollectionJoinDao = db.bookCollectionJoinDao();
         bookDao = db.bookDao();
+
+        collectionDao.insert(new Collection(HAVE_READ));
+        collectionDao.insert(new Collection(FAVOURITE));
     }
 
     public static DataRepository getInstance(final AppDatabase database) {

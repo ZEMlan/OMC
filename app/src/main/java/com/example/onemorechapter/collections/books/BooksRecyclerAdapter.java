@@ -50,7 +50,7 @@ public class BooksRecyclerAdapter extends RecyclerView.Adapter<BooksRecyclerAdap
 
     private void openBook(Book book) {
         ReadingFragment fragment = ReadingFragment.newInstance(
-                DocumentFile.fromSingleUri(App.getInstance(), book.getUriAsUri()));
+                DocumentFile.fromSingleUri(App.getInstance(), book.getUriAsUri()), 0);
 
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame, fragment).commit();

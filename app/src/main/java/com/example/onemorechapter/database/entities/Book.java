@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.print.PrintDocumentInfo;
 import android.widget.ScrollView;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,5 +94,6 @@ public class Book implements Serializable {
     public Uri getUriAsUri() {
         return Uri.parse(uri);
     }
+
 
 }

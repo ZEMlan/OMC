@@ -124,7 +124,7 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
     @Override
     public void showReadingFragment(){
         ReadingFragment readingFragment = ReadingFragment
-                .newInstance(App.getInstance().getCurrentBook());
+                .newInstance(App.getInstance().getCurrentBook(), App.getInstance().getCurrentPage());
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.frame, readingFragment)

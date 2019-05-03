@@ -135,7 +135,7 @@ public class CollectionListFragment extends
     private Dialog createDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_dialog, null);
+        View view = inflater.inflate(R.layout.collection_dialog, null);
 
         EditText name = view.findViewById(R.id.colName);
         builder.setView(view)
@@ -152,7 +152,7 @@ public class CollectionListFragment extends
     private Dialog editDialog(Collection collection, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_dialog, null);
+        View view = inflater.inflate(R.layout.collection_dialog, null);
 
         EditText name = view.findViewById(R.id.colName);
         builder.setView(view)

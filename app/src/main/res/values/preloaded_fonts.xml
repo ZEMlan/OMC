@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/average</item>
+        <item>@font/balthazar</item>
         <item>@font/cagliostro</item>
+        <item>@font/federo</item>
+        <item>@font/gentium_book_basic</item>
+        <item>@font/lancelot</item>
+        <item>@font/old_standard_tt_bold</item>
+        <item>@font/prociono</item>
         <item>@font/roboto_mono</item>
+        <item>@font/sahitya_bold</item>
+        <item>@font/source_serif_pro_semibold</item>
     </array>
 </resources>
