@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- default value is a boolean -->
+    <SwitchPreference
+        android:key="is_read"
+        android:defaultValue="false"/>
+    <SwitchPreference
+        android:key="is_interval"
+        android:defaultValue="false"/>
+
+
+    <!-- default value is a string -->
+    <ListPreference
+        android:key="font"
+        android:defaultValue="Old Standard TT"/>
+    <EditTextPreference
+        android:key="text_size"
+        android:defaultValue="18"/>
+
+</PreferenceScreen>

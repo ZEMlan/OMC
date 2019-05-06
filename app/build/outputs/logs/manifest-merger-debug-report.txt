@@ -15,6 +15,7 @@ MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Евгения\.gradle\c
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\620dfcc511d648b3a5298f7f672cde5c\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.paging:paging-runtime:2.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\0c2fe3283d909615e03c9af23ae68729\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha5] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\22472d1051d2d28705321541af5cc358\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.preference:preference:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\16fadc7b64b49f218cbd32c8ffdbf53e\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\ab16de5241b8ce7ddacb7ad3a5f1faac\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\c7e6bc4623e3d91c36846d7900838651\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\36a718c6155b5e9f7cdaac19c4824a8a\AndroidManifest.xml:17:1-22:12
@@ -188,6 +189,8 @@ MERGED from [androidx.paging:paging-runtime:2.0.0] C:\Users\Евгения\.gradle\cach
 MERGED from [androidx.paging:paging-runtime:2.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\0c2fe3283d909615e03c9af23ae68729\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha5] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\22472d1051d2d28705321541af5cc358\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha5] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\22472d1051d2d28705321541af5cc358\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.preference:preference:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\16fadc7b64b49f218cbd32c8ffdbf53e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.preference:preference:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\16fadc7b64b49f218cbd32c8ffdbf53e\AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\ab16de5241b8ce7ddacb7ad3a5f1faac\AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\ab16de5241b8ce7ddacb7ad3a5f1faac\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Евгения\.gradle\caches\transforms-2\files-2.1\c7e6bc4623e3d91c36846d7900838651\AndroidManifest.xml:20:5-44

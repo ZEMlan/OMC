@@ -33,4 +33,18 @@
         </menu>
     </item>
 
+    <item android:title="Прочее">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_setting"
+                    android:icon="@drawable/settings"
+                    android:title="Настройки" />
+                <item
+                    android:id="@+id/nav_info"
+                    android:icon="@drawable/glasses"
+                    android:title="О приложении"/>
+            </group>
+        </menu>
+    </item>
 </menu>

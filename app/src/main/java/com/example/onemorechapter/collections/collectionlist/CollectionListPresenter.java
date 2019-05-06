@@ -45,8 +45,7 @@ class CollectionListPresenter extends MvpBasePresenter<ICollectionListView> {
         repository.insertCollection(collection);
     }
 
-    void renameCollection(Collection collection, String newName){
+    void renameCollection(Collection collection, String newName) throws Exception {
         repository.renameCollection(collection, newName);
     }
-
 }

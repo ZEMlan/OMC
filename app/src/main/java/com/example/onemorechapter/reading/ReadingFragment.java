@@ -1,13 +1,15 @@
 package com.example.onemorechapter.reading;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -77,6 +79,7 @@ public class ReadingFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        setHasOptionsMenu(true);
 
         if (getArguments() != null) {
             currentBook = (Book) getArguments().getSerializable(CURRENT_BOOK);
@@ -89,6 +92,7 @@ public class ReadingFragment
             currentBook = (Book) savedInstanceState.getSerializable(CURRENT_BOOK);
             pageNumber = savedInstanceState.getInt(CURRENT_PAGE);
         }
+
     }
 
     @Override
@@ -118,10 +122,15 @@ public class ReadingFragment
 
         if(currentBook == null){
             blank.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.INVISIBLE);
         }else{
             presenter.loadBook(currentBook);
         }
+
+        presenter.getSharedPref();
     }
+
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -138,12 +147,13 @@ public class ReadingFragment
         pdfView.setVisibility(View.INVISIBLE);
 
         progressBar.setVisibility(View.VISIBLE);
-        progressBar.animate();
     }
 
     public void showError(String message){
         currentBook = null;
         blank.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
+
         Snackbar.make(getView(), message, Snackbar.LENGTH_SHORT).show();
     }
 
@@ -168,13 +178,8 @@ public class ReadingFragment
     public void openTxt(String s) {
         progressBar.setVisibility(View.INVISIBLE);
 
-        scrollView.setVisibility(View.VISIBLE);
         txtView.setText(s);
-    }
-
-    @Override
-    public void askForOpenEpub(){
-        openEpubDialog().show();
+        scrollView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -193,8 +198,8 @@ public class ReadingFragment
                         App.getInstance().setCurrentBook(DocumentFile.fromSingleUri(getContext(), bookUri));
                         getPresenter().loadBook(currentBook);
                     }
-                }else
-                    break;
+                }
+                break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -205,8 +210,10 @@ public class ReadingFragment
         super.onDestroy();
     }
 
+    @Override
+    public void openEpubDialog() {
+        progressBar.setVisibility(View.INVISIBLE);
 
-    private Dialog openEpubDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.epub_dialog, null);
@@ -222,7 +229,18 @@ public class ReadingFragment
                     }
                 })
                 .setNegativeButton("Отмена", (dialog, id) -> showError("Действие было отменено"));
-        return builder.create();
+       builder.create().show();
+    }
+
+    @Override
+    public void setDisplayOn(){
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    }
+
+    @Override
+    public void setTextSizeAndFont(int size, Typeface font) {
+        txtView.setTextSize(size);
+        txtView.setTypeface(font);
     }
 
 

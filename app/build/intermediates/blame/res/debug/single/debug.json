@@ -56,6 +56,10 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\drawable\\shape_highlight_yellow.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_preference_list_divider_material.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\drawable-v21\\preference_list_divider_material.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item_separator.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\620dfcc511d648b3a5298f7f672cde5c\\res\\layout\\design_navigation_item_separator.xml"
     },
@@ -86,10 +90,6 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
-    },
-    {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\menu_context_library_menu.xml.flat",
-        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\menu\\context_library_menu.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
@@ -172,6 +172,10 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_info.xml.flat",
+        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\layout\\fragment_info.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\anim_shrink_from_topright_to_bottomleft.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\anim\\shrink_from_topright_to_bottomleft.xml"
     },
@@ -184,16 +188,20 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xxhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
-    },
-    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_search_normal.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\layout\\item_search_normal.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\620dfcc511d648b3a5298f7f672cde5c\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_arrow_down_24dp.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\drawable-anydpi-v21\\ic_arrow_down_24dp.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -216,12 +224,20 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\drawable\\ic_play.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_widget_seekbar.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_widget_seekbar.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_slide_in_top.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\anim\\abc_slide_in_top.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21_design_bottom_sheet_slide_out.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\620dfcc511d648b3a5298f7f672cde5c\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_widget_switch.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_widget_switch.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -384,10 +400,6 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\layout\\dialog_edit_notes.xml"
     },
     {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\font_balthazar.xml.flat",
-        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\font\\balthazar.xml"
-    },
-    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
@@ -460,12 +472,12 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\anim\\slide_in_up.xml"
     },
     {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
-        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_48dp.png"
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_arrow_down_24dp.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\drawable-v21\\ic_arrow_down_24dp.xml"
     },
     {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\font_average.xml.flat",
-        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\font\\average.xml"
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_enter.xml.flat",
@@ -490,6 +502,10 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable_font_text_selector.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\drawable\\font_text_selector.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_ic_arrow_down_24dp.png.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\drawable-hdpi-v4\\ic_arrow_down_24dp.png"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-hdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -628,6 +644,10 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\color\\switch_thumb_material_light.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_preference_information_material.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout-v21\\preference_information_material.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_start.xml.flat",
         "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\layout\\fragment_start.xml"
     },
@@ -764,6 +784,10 @@
         "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\drawable\\book_open_page_variant.png"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\xml_advanced_preferences.xml.flat",
+        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\xml\\advanced_preferences.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_highlight_list.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\layout\\fragment_highlight_list.xml"
     },
@@ -796,12 +820,12 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
-    },
-    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_toolbar.xml.flat",
@@ -816,6 +840,14 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\interpolator\\btn_checkbox_checked_mtrl_animation_interpolator_0.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4_ic_arrow_down_24dp.png.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\drawable-ldpi-v4\\ic_arrow_down_24dp.png"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ic_arrow_down_24dp.png.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\drawable-xxhdpi-v4\\ic_arrow_down_24dp.png"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-mdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
@@ -826,10 +858,6 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_view_loading.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\layout\\view_loading.xml"
-    },
-    {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\font_prociono.xml.flat",
-        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\font\\prociono.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
@@ -944,6 +972,10 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_recyclerview.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_recyclerview.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_ic_format_font_black_36dp.png.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\drawable-hdpi-v4\\ic_format_font_black_36dp.png"
     },
@@ -966,6 +998,10 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_horiz_separator.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\layout\\horiz_separator.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_preference_category_material.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout-v21\\preference_category_material.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_bar_title_item.xml.flat",
@@ -1106,6 +1142,14 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\anim_grow_from_topright_to_bottomleft.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\anim\\grow_from_topright_to_bottomleft.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_dropdown.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_dropdown.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\xml_preferences.xml.flat",
+        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\xml\\preferences.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_seek_thumb.xml.flat",
@@ -1256,6 +1300,10 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xhdpi-v4\\abc_list_pressed_holo_dark.9.png"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_ic_arrow_down_24dp.png.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\drawable-mdpi-v4\\ic_arrow_down_24dp.png"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout-v26_abc_screen_toolbar.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\layout-v26\\abc_screen_toolbar.xml"
     },
@@ -1296,16 +1344,16 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\620dfcc511d648b3a5298f7f672cde5c\\res\\interpolator\\mtrl_linear.xml"
     },
     {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\font_federo.xml.flat",
-        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\font\\federo.xml"
-    },
-    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\anim_design_snackbar_in.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\620dfcc511d648b3a5298f7f672cde5c\\res\\anim\\design_snackbar_in.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_list_fragment.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_list_fragment.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_search_empty.xml.flat",
@@ -1378,6 +1426,10 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_simple_overlay_action_mode.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_ic_arrow_down_24dp.png.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\drawable-xhdpi-v4\\ic_arrow_down_24dp.png"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -1508,10 +1560,6 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\font_source_serif_pro_semibold.xml.flat",
-        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\font\\source_serif_pro_semibold.xml"
-    },
-    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
@@ -1598,10 +1646,6 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_alert_dialog_material.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\layout\\abc_alert_dialog_material.xml"
-    },
-    {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\font_lancelot.xml.flat",
-        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\font\\lancelot.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_black_48dp.png.flat",
@@ -1720,10 +1764,6 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\font_sahitya_bold.xml.flat",
-        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\font\\sahitya_bold.xml"
-    },
-    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xxxhdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
     },
@@ -1784,10 +1824,6 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\7e65db39675f20ad4c7b24ecfa419444\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
-        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\font_gentium_book_basic.xml.flat",
-        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\font\\gentium_book_basic.xml"
-    },
-    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
     },
@@ -1822,6 +1858,10 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_mtrl_chip_checked_circle.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\620dfcc511d648b3a5298f7f672cde5c\\res\\drawable\\ic_mtrl_chip_checked_circle.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_btn_checkable.xml.flat",
@@ -1900,8 +1940,16 @@
         "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\layout\\fragment_reading.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_category.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_category.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable_thumb.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\drawable\\thumb.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_preference_widget_seekbar_material.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout-v21\\preference_widget_seekbar_material.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_checked_icon_null_animation.xml.flat",
@@ -1922,6 +1970,10 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_icon_group.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\7e65db39675f20ad4c7b24ecfa419444\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_dialog_edittext.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_dialog_edittext.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_bottom_nav_item_tint.xml.flat",
@@ -1958,6 +2010,10 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_folio_page_fragment.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\layout\\folio_page_fragment.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_preference_dropdown_material.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout-v21\\preference_dropdown_material.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_view_webview_pager.xml.flat",
@@ -2128,12 +2184,20 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\620dfcc511d648b3a5298f7f672cde5c\\res\\layout\\design_layout_snackbar_include.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_information.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_information.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\font_cagliostro.xml.flat",
         "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\font\\cagliostro.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\982ff47aacc4ccb2b35c67d74b588509\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_preference_material.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout-v21\\preference_material.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable_heart.png.flat",
@@ -2324,6 +2388,10 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\7e65db39675f20ad4c7b24ecfa419444\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_widget_checkbox.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_widget_checkbox.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_seekbar_thumb.png.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\973aa801b8a3fde371b99fca8fc79fb5\\res\\drawable-xhdpi-v4\\seekbar_thumb.png"
     },
@@ -2504,6 +2572,10 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_preference_widget_switch_compat.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\preference_widget_switch_compat.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\interpolator_btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\interpolator\\btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml"
     },
@@ -2628,6 +2700,10 @@
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
     },
     {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable_glasses.png.flat",
+        "source": "C:\\AndroidProjects\\OneMoreChapter\\app\\src\\main\\res\\drawable\\glasses.png"
+    },
+    {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23_abc_control_background_material.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\drawable-v23\\abc_control_background_material.xml"
     },
@@ -2678,6 +2754,10 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_custom_big.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\7e65db39675f20ad4c7b24ecfa419444\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\layout_expand_button.xml.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\layout\\expand_button.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -2738,6 +2818,10 @@
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\anim_btn_radio_to_off_mtrl_ring_outer_animation.xml.flat",
         "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\1a232d00b47b1ab757fb04a1a6bc1c90\\res\\anim\\btn_radio_to_off_mtrl_ring_outer_animation.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_ic_arrow_down_24dp.png.flat",
+        "source": "C:\\Users\\Евгения\\.gradle\\caches\\transforms-2\\files-2.1\\16fadc7b64b49f218cbd32c8ffdbf53e\\res\\drawable-xxxhdpi-v4\\ic_arrow_down_24dp.png"
     },
     {
         "merged": "C:\\AndroidProjects\\OneMoreChapter\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_ic_format_font_black_24dp.png.flat",

@@ -109,8 +109,8 @@ public class DataRepository {
         db.bookDao().delete(book);
     }
 
-    public void renameCollection(Collection collection, String newName){
-        collectionDao.updateName(collection.getName(), newName);
+    public void renameCollection(Collection collection, String newName)throws Exception{
         bookCollectionJoinDao.updateName(collection.getCollectionKey(), newName.hashCode());
+        collectionDao.updateName(collection.getCollectionKey(), newName, newName.hashCode());
     }
 }

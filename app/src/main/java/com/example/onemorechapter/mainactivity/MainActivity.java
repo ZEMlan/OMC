@@ -3,16 +3,16 @@ package com.example.onemorechapter.mainactivity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.StartFragment;
 import com.example.onemorechapter.collections.books.BooksFragment;
 import com.example.onemorechapter.collections.collectionlist.CollectionListFragment;
-import com.example.onemorechapter.database.entities.Book;
 import com.example.onemorechapter.database.entities.Collection;
+import com.example.onemorechapter.info.InfoFragment;
 import com.example.onemorechapter.model.App;
 import com.example.onemorechapter.reading.ReadingFragment;
+import com.example.onemorechapter.settings.SettingFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 
@@ -23,11 +23,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import static com.example.onemorechapter.model.Constants.BOOKS;
 import static com.example.onemorechapter.model.Constants.COLLECTIONS;
-import static com.example.onemorechapter.model.Constants.OTHERS;
 import static com.example.onemorechapter.model.Constants.READING;
 import static com.example.onemorechapter.model.Constants.START;
 import static com.example.onemorechapter.model.Constants.TARGET_FRAGMENT;
@@ -36,7 +36,7 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         implements NavigationView.OnNavigationItemSelectedListener,
         IMainActivityView{
 
-    private String targetFragment;
+    private String lastFragment;
 
     FragmentManager fragmentManager;
 
@@ -51,11 +51,7 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         setContentView(R.layout.activity_drawer);
 
         if (savedInstanceState != null){
-            targetFragment = savedInstanceState.getString(TARGET_FRAGMENT);
-
-        }else {
-            //TODO: actions for first launch
-            targetFragment = START;
+            lastFragment = savedInstanceState.getString(TARGET_FRAGMENT);
         }
 
         initUI();
@@ -80,7 +76,7 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
     }
 
     public void onSaveInstanceState(@NotNull Bundle bundle) {
-        bundle.putString(TARGET_FRAGMENT, targetFragment);
+        bundle.putString(TARGET_FRAGMENT, lastFragment);
         super.onSaveInstanceState(bundle);
     }
 
@@ -99,8 +95,7 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         navigationView.setNavigationItemSelectedListener(this);
 
         fragmentManager = getSupportFragmentManager();
-        loadLastFragment(targetFragment);
-
+        getPresenter().loadLastFragment(lastFragment);
     }
 
     @Override
@@ -112,12 +107,11 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
 
     @Override
     public void showStartFragment(){
-        StartFragment firstFragment = new StartFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.frame, firstFragment)
+                .replace(R.id.frame, new StartFragment())
                 .commitAllowingStateLoss();
-        targetFragment = START;
+        lastFragment = START;
         drawer.closeDrawer(GravityCompat.START);
     }
 
@@ -129,17 +123,16 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         fragmentManager.beginTransaction()
                 .replace(R.id.frame, readingFragment)
                 .commitAllowingStateLoss();
-        targetFragment = READING;
+        lastFragment = READING;
         drawer.closeDrawer(GravityCompat.START);
     }
 
     @Override
     public void showCollectionListFragment(){
-        CollectionListFragment collectionFragment = new CollectionListFragment();
         fragmentManager.beginTransaction()
-                .replace(R.id.frame, collectionFragment)
+                .replace(R.id.frame, new CollectionListFragment())
                 .commitAllowingStateLoss();
-        targetFragment = COLLECTIONS;
+        lastFragment = COLLECTIONS;
         drawer.closeDrawer(GravityCompat.START);
     }
 
@@ -154,18 +147,34 @@ public class MainActivity extends MvpActivity<IMainActivityView, MainActivityPre
         fragmentManager.beginTransaction()
                 .replace(R.id.frame, booksFragment)
                 .commitAllowingStateLoss();
-        targetFragment = BOOKS;
+        lastFragment = BOOKS;
         drawer.closeDrawer(GravityCompat.START);
     }
 
     @Override
-    public void loadLastFragment(String targetFragment){
-        getPresenter().loadLastFragment(targetFragment);
+    public void showSettingFragment(){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame, new SettingFragment())
+                .commitAllowingStateLoss();
+
+        lastFragment = START;
+        drawer.closeDrawer(GravityCompat.START);
     }
 
     @Override
+    public void showInfoFragment() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.frame, new InfoFragment())
+                .commitAllowingStateLoss();
+
+        lastFragment = START;
+        drawer.closeDrawer(GravityCompat.START);
+    }
+
+
+    @Override
     public void onBackPressed() {
-        if(targetFragment.equals(BOOKS)) {
+        if(lastFragment.equals(BOOKS)) {
             showCollectionListFragment();
         }
     }

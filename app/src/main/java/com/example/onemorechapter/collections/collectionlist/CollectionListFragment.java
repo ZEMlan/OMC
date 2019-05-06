@@ -157,8 +157,15 @@ public class CollectionListFragment extends
         EditText name = view.findViewById(R.id.colName);
         builder.setView(view)
                 .setPositiveButton("Переименовать", (dialog, id) -> {
-                    getPresenter().renameCollection(collection, name.getText().toString());
-                    adapter.editItem(position, name.getText().toString());
+                    try {
+                        getPresenter().renameCollection(collection, name.getText().toString());
+                        adapter.editItem(position, name.getText().toString());
+                    } catch (Exception e) {
+                        showError(e.getMessage());
+                        adapter.removeItem(position);
+                        adapter.restoreItem(collection, position);
+                    }
+
                 })
                 .setNegativeButton("Отмена", (dialog, id) -> {
                     adapter.restoreItem(collection, position);
@@ -208,5 +215,8 @@ public class CollectionListFragment extends
         itemTouchhelper.attachToRecyclerView(recyclerView);
     }
 
+    public void showError(String message){
+        Snackbar.make(getView(), message, Snackbar.LENGTH_SHORT).show();
+    }
 
 }

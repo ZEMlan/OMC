@@ -9,8 +9,6 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.TypeConverters;
-import androidx.room.Update;
 import io.reactivex.Flowable;
 
 @Dao
@@ -18,8 +16,8 @@ public interface ICollectionDao {
     @Query("SELECT * FROM collections")
     Flowable<List<Collection>> getAll();
 
-    @Query("UPDATE collections SET name=:newName WHERE name=:oldName")
-    void updateName(String oldName, String newName);
+    @Query("UPDATE collections SET name=:newName, collectionKey=:newKey WHERE collectionKey=:oldKey")
+    void updateName(int oldKey, String newName, int newKey);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Collection collection);

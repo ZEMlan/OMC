@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="Общее">
+        <SwitchPreference
+            android:fontFamily="@font/roboto_mono"
+            android:key="is_read"
+            android:summary="Продолжить читать последний документ при запуске приложения"
+            android:title="Открывать книгу при запуске" />
+
+        <SwitchPreference
+            android:key="is_on"
+            android:summary="Оставлять экран включенным, когда открыт документ"
+            android:title="Не выключать экран" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:fontFamily="@font/roboto_mono"
+        android:textAlignment="viewStart"
+        android:title="Настройки отображения текста">
+
+        <EditTextPreference
+            android:dialogTitle="Введите размер шрифта:"
+            android:fontFamily="@font/roboto_mono"
+            android:gravity="start"
+            android:key="text_size"
+            android:summary="Изменить размер шрифта"
+            android:title="Размер шрифта" />
+
+        <ListPreference
+            android:entries="@array/fonts_array"
+            android:entryValues="@array/fonts_array"
+            android:key="font"
+            android:title="Шрифт" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,15 +1,20 @@
 package com.example.onemorechapter.mainactivity;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.database.entities.Collection;
 import com.example.onemorechapter.model.App;
+import com.example.onemorechapter.settings.SettingFragment;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.documentfile.provider.DocumentFile;
 
 import static com.example.onemorechapter.model.Constants.BOOKS;
@@ -18,6 +23,7 @@ import static com.example.onemorechapter.model.Constants.FAVOURITE;
 import static com.example.onemorechapter.model.Constants.HAVE_READ;
 import static com.example.onemorechapter.model.Constants.OTHERS;
 import static com.example.onemorechapter.model.Constants.READING;
+import static com.example.onemorechapter.model.Constants.SHARED_PREFERENCES;
 import static com.example.onemorechapter.model.Constants.START;
 
 class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>
@@ -28,61 +34,87 @@ class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>
 
      void onMenuItemSelected(int id){
         boolean isViewAttached = isViewAttached();
-        if (id == R.id.nav_start){
-            if(isViewAttached) {
-                getView().showStartFragment();
-                getView().setTitle("Home");
-            }
-        }
-        if (id == R.id.nav_reading){
-            if(isViewAttached) {
-                getView().showReadingFragment();
-                getView().setTitle("Reading");
-            }
-        }
-        if (id == R.id.nav_fav){
-            if(isViewAttached) {
-                getView().showBooksFragment(new Collection(FAVOURITE));
-                getView().setTitle("Collections");
-            }
-        }
-        if (id == R.id.nav_read){
-            if(isViewAttached) {
-                getView().showBooksFragment(new Collection(HAVE_READ));
-                getView().setTitle("Collections");
-            }
-        }
-        if(id == R.id.nav_other){
-            if(isViewAttached) {
-                getView().showCollectionListFragment();
-                getView().setTitle("Collections");
-            }
-        }
-    }
-
-    void loadLastFragment(@NonNull String fragment){
-        boolean isViewAttached = isViewAttached();
-        switch (fragment){
-            case START:
-                default:
-                if(isViewAttached) {
+        switch (id) {
+            case (R.id.nav_start):
+                if (isViewAttached) {
                     getView().showStartFragment();
                     getView().setTitle("Home");
                 }
-                break;
-            case READING:
-                if(isViewAttached) {
+            break;
+            case (R.id.nav_reading):
+                if (isViewAttached) {
                     getView().showReadingFragment();
                     getView().setTitle("Reading");
                 }
-                break;
-            case COLLECTIONS:
-                if(isViewAttached) {
+            break;
+            case (R.id.nav_fav):
+                if (isViewAttached) {
+                    getView().showBooksFragment(new Collection(FAVOURITE));
+                    getView().setTitle("Collections");
+                }
+            break;
+            case (R.id.nav_read):
+                if (isViewAttached) {
+                    getView().showBooksFragment(new Collection(HAVE_READ));
+                    getView().setTitle("Collections");
+                }
+            break;
+            case (R.id.nav_other):
+                if (isViewAttached) {
                     getView().showCollectionListFragment();
                     getView().setTitle("Collections");
                 }
-                break;
+            break;
+            case (R.id.nav_setting):
+                if (isViewAttached) {
+                    getView().showSettingFragment();
+                    getView().setTitle("Настройки");
+                }
+            break;
+            case (R.id.nav_info):
+                if(isViewAttached){
+                    getView().showInfoFragment();
+                    getView().setTitle("О приложении");
+                }
+            break;
         }
+    }
+
+    void loadLastFragment(@Nullable String fragment){
+        boolean isViewAttached = isViewAttached();
+        if(fragment == null){
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(App.getInstance());
+            boolean is_read = preferences.getBoolean("is_read", false);
+
+            if(is_read && isViewAttached){
+                getView().showReadingFragment();
+            }else if (isViewAttached){
+                getView().showStartFragment();
+            }
+        }else {
+            switch (fragment) {
+                case START:
+                default:
+                    if (isViewAttached) {
+                        getView().showStartFragment();
+                        getView().setTitle("Home");
+                    }
+                    break;
+                case READING:
+                    if (isViewAttached) {
+                        getView().showReadingFragment();
+                        getView().setTitle("Reading");
+                    }
+                    break;
+                case COLLECTIONS:
+                    if (isViewAttached) {
+                        getView().showCollectionListFragment();
+                        getView().setTitle("Collections");
+                    }
+                    break;
+            }
+        }
+
     }
 
 }

@@ -69,7 +69,7 @@ public final class ICollectionDao_Impl implements ICollectionDao {
     this.__preparedStmtOfUpdateName = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
-        final String _query = "UPDATE collections SET name=? WHERE name=?";
+        final String _query = "UPDATE collections SET name=?, collectionKey=? WHERE collectionKey=?";
         return _query;
       }
     };
@@ -120,7 +120,7 @@ public final class ICollectionDao_Impl implements ICollectionDao {
   }
 
   @Override
-  public void updateName(String oldName, String newName) {
+  public void updateName(int oldKey, String newName, int newKey) {
     final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateName.acquire();
     __db.beginTransaction();
     try {
@@ -131,11 +131,9 @@ public final class ICollectionDao_Impl implements ICollectionDao {
         _stmt.bindString(_argIndex, newName);
       }
       _argIndex = 2;
-      if (oldName == null) {
-        _stmt.bindNull(_argIndex);
-      } else {
-        _stmt.bindString(_argIndex, oldName);
-      }
+      _stmt.bindLong(_argIndex, newKey);
+      _argIndex = 3;
+      _stmt.bindLong(_argIndex, oldKey);
       _stmt.executeUpdateDelete();
       __db.setTransactionSuccessful();
     } finally {

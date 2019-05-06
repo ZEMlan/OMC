@@ -1,6 +1,9 @@
 package com.example.onemorechapter.reading;
 
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.database.entities.Book;
@@ -9,10 +12,10 @@ import com.folioreader.Config;
 import com.folioreader.Constants;
 import com.folioreader.FolioReader;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.kursx.parser.fb2.FictionBook;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
@@ -40,7 +43,7 @@ public class ReadingPresenter extends MvpBasePresenter<IReadingView> {
                     readTextFromUri(book.getUriAsUri(), book.getType());
                     break;
                 case ".epub":
-                    getView().askForOpenEpub();
+                    getView().openEpubDialog();
                     break;
                 default:
                     getView().showError("Данный формат не поддерживается");
@@ -77,7 +80,6 @@ public class ReadingPresenter extends MvpBasePresenter<IReadingView> {
 
     }
 
-
     void readEpub(Uri uri) throws URISyntaxException{
         String path = PathUtil.getPath(App.getInstance(), uri);
         Config config = new Config()
@@ -93,5 +95,56 @@ public class ReadingPresenter extends MvpBasePresenter<IReadingView> {
                 .openBook(path);
     }
 
+    void getSharedPref(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(App.getInstance());
 
+        boolean is_on = preferences.getBoolean("is_on", false);
+        String textSize = preferences.getString("text_size", "18");
+        int size = textSize != null ? Integer.valueOf(textSize) : 18;
+        String font = preferences.getString("font", "Old Standard TT");
+        Typeface typeface = getFont(font);
+
+        if(isViewAttached()){
+            if(is_on)
+                getView().setDisplayOn();
+            getView().setTextSizeAndFont(size, typeface);
+        }
+    }
+
+    private Typeface getFont(@NotNull String font){
+        Typeface typeface = null;
+        switch (font){
+            case ("Old Standard TT"):
+                typeface = Typeface.createFromAsset(
+                        App.getInstance().getAssets(),
+                        "fonts/old_standard_regular.ttf");
+            break;
+            case ("Droid Sans Mono"):
+                typeface = Typeface.createFromAsset(
+                        App.getInstance().getAssets(),
+                        "fonts/droid_sans_mono.ttf");
+                break;
+            case ("Times New Roman"):
+                typeface = Typeface.createFromAsset(
+                        App.getInstance().getAssets(),
+                        "fonts/times_new_roman.ttf");
+                break;
+            case ("Bookman Old Style"):
+                typeface = Typeface.createFromAsset(
+                        App.getInstance().getAssets(),
+                        "fonts/bookman_old_style.ttf");
+                break;
+            case ("Theano Didot"):
+                typeface = Typeface.createFromAsset(
+                        App.getInstance().getAssets(),
+                        "fonts/theano_didot_regular.ttf");
+                break;
+            case ("America XIX"):
+                typeface = Typeface.createFromAsset(
+                        App.getInstance().getAssets(),
+                        "fonts/am_xix.otf");
+                break;
+        }
+        return typeface;
+    }
 }

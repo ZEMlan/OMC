@@ -12,6 +12,7 @@ import androidx.room.Room;
 import static com.example.onemorechapter.model.Constants.CURRENT_BOOK;
 import static com.example.onemorechapter.model.Constants.CURRENT_PAGE;
 import static com.example.onemorechapter.model.Constants.DATABASE_NAME;
+import static com.example.onemorechapter.model.Constants.SHARED_PREFERENCES;
 
 public class App extends Application {
 
@@ -38,7 +39,7 @@ public class App extends Application {
                 .build();
         dataRepository = DataRepository.getInstance(database);
 
-        sPref = getSharedPreferences(CURRENT_BOOK, Context.MODE_PRIVATE);
+        sPref = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
         initCurrentBookAndPage();
     }
