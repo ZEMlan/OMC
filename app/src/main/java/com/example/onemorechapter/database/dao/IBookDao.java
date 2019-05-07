@@ -25,8 +25,5 @@ public interface IBookDao {
     void insert(Book book);
 
     @Delete
-    void deleteMany(List<Book> books);
-
-    @Delete
     void delete(Book book);
 }

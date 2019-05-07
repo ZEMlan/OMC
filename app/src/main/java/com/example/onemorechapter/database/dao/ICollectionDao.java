@@ -22,12 +22,6 @@ public interface ICollectionDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Collection collection);
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insertMany(List<Collection> collections);
-
-    @Delete
-    void deleteMany(List<Collection> collections);
-
     @Delete
     void delete(Collection collection);
 }

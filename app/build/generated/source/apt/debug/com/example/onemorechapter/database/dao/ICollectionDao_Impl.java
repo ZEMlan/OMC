@@ -87,28 +87,6 @@ public final class ICollectionDao_Impl implements ICollectionDao {
   }
 
   @Override
-  public void insertMany(List<Collection> collections) {
-    __db.beginTransaction();
-    try {
-      __insertionAdapterOfCollection.insert(collections);
-      __db.setTransactionSuccessful();
-    } finally {
-      __db.endTransaction();
-    }
-  }
-
-  @Override
-  public void deleteMany(List<Collection> collections) {
-    __db.beginTransaction();
-    try {
-      __deletionAdapterOfCollection.handleMultiple(collections);
-      __db.setTransactionSuccessful();
-    } finally {
-      __db.endTransaction();
-    }
-  }
-
-  @Override
   public void delete(Collection collection) {
     __db.beginTransaction();
     try {

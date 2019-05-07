@@ -14,9 +14,7 @@ import com.example.onemorechapter.reading.ReadingFragment;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.GravityCompat;
 import androidx.documentfile.provider.DocumentFile;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;

@@ -64,7 +64,7 @@ public class CollectionListFragment extends
         recyclerView = view.findViewById(R.id.collectionListView);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);
-        adapter = new CollectionListRecyclerAdapter(getPresenter());
+        adapter = new CollectionListRecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
@@ -215,7 +215,7 @@ public class CollectionListFragment extends
         itemTouchhelper.attachToRecyclerView(recyclerView);
     }
 
-    public void showError(String message){
+    private void showError(String message){
         Snackbar.make(getView(), message, Snackbar.LENGTH_SHORT).show();
     }
 

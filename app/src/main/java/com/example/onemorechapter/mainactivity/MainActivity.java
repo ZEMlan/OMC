@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.onemorechapter.R;
-import com.example.onemorechapter.StartFragment;
+import com.example.onemorechapter.start.StartFragment;
 import com.example.onemorechapter.collections.books.BooksFragment;
 import com.example.onemorechapter.collections.collectionlist.CollectionListFragment;
 import com.example.onemorechapter.database.entities.Collection;
@@ -23,7 +23,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import static com.example.onemorechapter.model.Constants.BOOKS;

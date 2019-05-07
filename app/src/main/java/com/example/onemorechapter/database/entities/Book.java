@@ -1,13 +1,8 @@
 package com.example.onemorechapter.database.entities;
 
 import android.net.Uri;
-import android.print.PrintDocumentInfo;
-import android.widget.ScrollView;
 
-import java.io.File;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.documentfile.provider.DocumentFile;
@@ -64,28 +59,6 @@ public class Book implements Serializable {
     public String getUri(){
         return uri;
     }
-
-    static public ArrayList<Book> getBookArray(DocumentFile[] files){
-        if(files == null){
-            return new ArrayList<>();
-        }
-        ArrayList<Book> books = new ArrayList<>();
-        for(DocumentFile i: files){
-            books.add(new Book(i));
-        }
-        return books;
-    }
-
-    static public List<Integer> getKeyArray(List<Book> books){
-        List<Integer> res = new ArrayList<>();
-        if (books == null || books.isEmpty())
-            return res;
-        for(Book book: books){
-            res.add(book.bookKey);
-        }
-        return res;
-    }
-
 
     public String getType() {
         return name.substring(name.lastIndexOf('.'));

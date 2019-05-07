@@ -27,11 +27,6 @@ public interface IBookCollectionJoinDao {
             "book_collection_join.collectionId=:targetCollectionId")
     Flowable<List<Book>> getBooksForCollection(int targetCollectionId);
 
-    @Query("SELECT * FROM collections INNER JOIN book_collection_join ON "+
-    "collections.collectionKey=book_collection_join.collectionId WHERE "+
-    "book_collection_join.bookId=:targetBookId")
-    Flowable<List<Collection>> getCollectionsForBook(int targetBookId);
-
     @Query("UPDATE book_collection_join SET collectionId=:newNameHash WHERE collectionId=:oldNameHash")
     void updateName(int oldNameHash, int newNameHash);
 

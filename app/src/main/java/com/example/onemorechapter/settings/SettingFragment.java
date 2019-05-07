@@ -2,7 +2,6 @@ package com.example.onemorechapter.settings;
 
 
 import android.os.Bundle;
-import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 

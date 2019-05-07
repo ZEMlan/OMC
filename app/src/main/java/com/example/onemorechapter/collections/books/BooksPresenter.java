@@ -11,13 +11,10 @@ import com.example.onemorechapter.model.DataRepository;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import androidx.documentfile.provider.DocumentFile;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.internal.observers.ConsumerSingleObserver;
 
 class BooksPresenter extends MvpBasePresenter<IBooksView> {
 

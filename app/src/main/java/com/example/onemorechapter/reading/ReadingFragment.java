@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -221,13 +220,7 @@ public class ReadingFragment
         builder.setView(view)
                 .setIcon(R.drawable.dip_switch);
 
-        builder.setPositiveButton("Да", (dialog, id) -> {
-                    try {
-                        getPresenter().readEpub(App.getInstance().getCurrentBook().getUri());
-                    } catch (URISyntaxException e) {
-                        showError(e.getMessage());
-                    }
-                })
+        builder.setPositiveButton("Да", (dialog, id) -> getPresenter().readEpub(App.getInstance().getCurrentBook().getUri()))
                 .setNegativeButton("Отмена", (dialog, id) -> showError("Действие было отменено"));
        builder.create().show();
     }

@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 
 import io.reactivex.Single;
@@ -80,7 +79,7 @@ public class ReadingPresenter extends MvpBasePresenter<IReadingView> {
 
     }
 
-    void readEpub(Uri uri) throws URISyntaxException{
+    void readEpub(Uri uri) {
         String path = PathUtil.getPath(App.getInstance(), uri);
         Config config = new Config()
                 .setDirection(Config.Direction.VERTICAL)

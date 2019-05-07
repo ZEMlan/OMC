@@ -1572,6 +1572,7 @@ id btn_twox_speed
 id btn_wikipedia
 id buttonHorizontal
 id buttonPanel
+id buttonThanks
 id buttonVertical
 id cancel_action
 id center
@@ -1830,6 +1831,7 @@ id submenuarrow
 id submit_area
 id swipe_linear_layout
 id switchWidget
+id t1
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -1845,6 +1847,13 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView
+id textView2
+id textView3
+id textView4
+id textView5
+id textView6
+id textView7
+id textView8
 id textViewCount
 id textViewResult
 id textViewTitle

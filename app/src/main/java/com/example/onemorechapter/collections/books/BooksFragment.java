@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.onemorechapter.R;
-import com.example.onemorechapter.collections.collectionlist.SwipeToDeleteAndEditCallback;
 import com.example.onemorechapter.database.entities.Book;
 import com.example.onemorechapter.database.entities.Collection;
 import com.example.onemorechapter.model.App;

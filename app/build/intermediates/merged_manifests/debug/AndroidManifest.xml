@@ -22,7 +22,6 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@drawable/icon_read_books_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/BookTheme" >
         <activity android:name="com.example.onemorechapter.mainactivity.MainActivity" >
             <intent-filter>
@@ -73,10 +72,6 @@
             android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
             android:authorities="com.example.onemorechapter.lifecycle-process"
             android:exported="false"
-            android:multiprocess="true" />
-        <provider
-            android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="com.example.onemorechapter.com.android.tools.ir.server.InstantRunContentProvider"
             android:multiprocess="true" />
     </application>
 

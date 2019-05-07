@@ -18,14 +18,7 @@ class CollectionListRecyclerAdapter
         extends RecyclerView.Adapter<CollectionListRecyclerAdapter.CardViewHolder> {
 
      private ArrayList<Collection> collections;
-    private CollectionListPresenter presenter;
-
     private MainActivity activity;
-
-    CollectionListRecyclerAdapter(CollectionListPresenter presenter){
-        this.presenter = presenter;
-    }
-
 
     @NonNull
     @Override

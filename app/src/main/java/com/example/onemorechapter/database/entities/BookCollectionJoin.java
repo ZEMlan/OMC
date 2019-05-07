@@ -1,8 +1,5 @@
 package com.example.onemorechapter.database.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -61,13 +58,4 @@ public class BookCollectionJoin {
         this.bookId = bookId;
     }
 
-    public static ArrayList makeList(List<Book> books, int collectionId){
-        ArrayList res = new ArrayList();
-        if(books == null)
-            return res;
-        for(Book book: books) {
-            res.add(new BookCollectionJoin(book.getBookKey(), collectionId));
-        }
-        return res;
-    }
 }

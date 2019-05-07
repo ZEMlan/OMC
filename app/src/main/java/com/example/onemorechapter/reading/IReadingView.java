@@ -4,8 +4,6 @@ import android.graphics.Typeface;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 
-import java.lang.reflect.Type;
-
 interface IReadingView extends MvpView {
 
     void openPdf();

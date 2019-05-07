@@ -23,14 +23,8 @@ public class Constants {
 
     public static final String HAVE_READ = "haveRead";
 
-    public static final String OTHERS = "others";
-
     public static final int REQUEST_CODE_PICK_FILE = 1;
 
     public static final String SHARED_PREFERENCES = "sPref";
-
-    public static final String TEXT_SIZE = "text size";
-
-    public static final String FONT = "font";
 
 }

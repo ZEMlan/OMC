@@ -1,29 +1,21 @@
 package com.example.onemorechapter.mainactivity;
 
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.preference.PreferenceManager;
 
 import com.example.onemorechapter.R;
 import com.example.onemorechapter.database.entities.Collection;
 import com.example.onemorechapter.model.App;
-import com.example.onemorechapter.settings.SettingFragment;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.documentfile.provider.DocumentFile;
 
-import static com.example.onemorechapter.model.Constants.BOOKS;
 import static com.example.onemorechapter.model.Constants.COLLECTIONS;
 import static com.example.onemorechapter.model.Constants.FAVOURITE;
 import static com.example.onemorechapter.model.Constants.HAVE_READ;
-import static com.example.onemorechapter.model.Constants.OTHERS;
 import static com.example.onemorechapter.model.Constants.READING;
-import static com.example.onemorechapter.model.Constants.SHARED_PREFERENCES;
 import static com.example.onemorechapter.model.Constants.START;
 
 class MainActivityPresenter extends MvpBasePresenter<IMainActivityView>

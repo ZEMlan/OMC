@@ -10,7 +10,6 @@ import androidx.room.SharedSQLiteStatement;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.onemorechapter.database.entities.Book;
 import com.example.onemorechapter.database.entities.BookCollectionJoin;
-import com.example.onemorechapter.database.entities.Collection;
 import io.reactivex.Flowable;
 import java.lang.Exception;
 import java.lang.Integer;
@@ -171,47 +170,6 @@ public final class IBookCollectionJoinDao_Impl implements IBookCollectionJoinDao
             final String _tmpUri;
             _tmpUri = _cursor.getString(_cursorIndexOfUri);
             _item = new Book(_tmpBookKey,_tmpUri,_tmpName);
-            _result.add(_item);
-          }
-          return _result;
-        } finally {
-          _cursor.close();
-        }
-      }
-
-      @Override
-      protected void finalize() {
-        _statement.release();
-      }
-    });
-  }
-
-  @Override
-  public Flowable<List<Collection>> getCollectionsForBook(int targetBookId) {
-    final String _sql = "SELECT * FROM collections INNER JOIN book_collection_join ON collections.collectionKey=book_collection_join.collectionId WHERE book_collection_join.bookId=?";
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
-    int _argIndex = 1;
-    _statement.bindLong(_argIndex, targetBookId);
-    return RxRoom.createFlowable(__db, new String[]{"collections","book_collection_join"}, new Callable<List<Collection>>() {
-      @Override
-      public List<Collection> call() throws Exception {
-        final Cursor _cursor = __db.query(_statement);
-        try {
-          final int _cursorIndexOfCollectionKey = _cursor.getColumnIndexOrThrow("collectionKey");
-          final int _cursorIndexOfName = _cursor.getColumnIndexOrThrow("name");
-          final List<Collection> _result = new ArrayList<Collection>(_cursor.getCount());
-          while(_cursor.moveToNext()) {
-            final Collection _item;
-            final String _tmpName;
-            _tmpName = _cursor.getString(_cursorIndexOfName);
-            _item = new Collection(_tmpName);
-            final Integer _tmpCollectionKey;
-            if (_cursor.isNull(_cursorIndexOfCollectionKey)) {
-              _tmpCollectionKey = null;
-            } else {
-              _tmpCollectionKey = _cursor.getInt(_cursorIndexOfCollectionKey);
-            }
-            _item.setCollectionKey(_tmpCollectionKey);
             _result.add(_item);
           }
           return _result;

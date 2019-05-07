@@ -1,7 +1,5 @@
 package com.example.onemorechapter.model;
 
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
 import com.example.onemorechapter.database.AppDatabase;
 import com.example.onemorechapter.database.dao.IBookCollectionJoinDao;
 import com.example.onemorechapter.database.dao.IBookDao;
@@ -57,13 +55,6 @@ public class DataRepository {
                 .subscribe();
     }
 
-    public void insertBooks(final List<Book> books){
-        Completable.create( emitter -> bookDao.insertMany(books))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
-    }
-
     public void insertBook(Book book) {
         Completable.create( emitter -> bookDao.insert(book))
                 .subscribeOn(Schedulers.io())
@@ -71,12 +62,6 @@ public class DataRepository {
                 .subscribe();
     }
 
-    public void insertManyBookCollectionJoin(List<BookCollectionJoin> joinList){
-        Completable.create( emitter -> bookCollectionJoinDao.insertMany(joinList))
-        .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
-    }
 
     public void insertBookCollectionJoin(BookCollectionJoin join) {
         Completable.create( emitter -> bookCollectionJoinDao.insert(join))
@@ -92,11 +77,6 @@ public class DataRepository {
     public Flowable<List<Book>> loadBooksInCollection(final int collectionID) {
         return db.bookCollectionJoinDao().getBooksForCollection(collectionID);
     }
-
-    public void deleteMany(List<BookCollectionJoin> joins){
-        db.bookCollectionJoinDao().deleteMany(joins);
-    }
-
     public void delete(BookCollectionJoin join) {
         db.bookCollectionJoinDao().delete(join);
     }
@@ -109,7 +89,7 @@ public class DataRepository {
         db.bookDao().delete(book);
     }
 
-    public void renameCollection(Collection collection, String newName)throws Exception{
+    public void renameCollection(Collection collection, String newName) {
         bookCollectionJoinDao.updateName(collection.getCollectionKey(), newName.hashCode());
         collectionDao.updateName(collection.getCollectionKey(), newName, newName.hashCode());
     }
